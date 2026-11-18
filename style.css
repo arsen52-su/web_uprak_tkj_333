@@ -1,0 +1,225 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0f172a;
+  color: #f8fafc;
+  line-height: 1.6;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 8%;
+  background: rgba(15, 23, 42, 0.9);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid #1e293b;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #f8fafc;
+}
+
+.logo span {
+  color: #38bdf8;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #cbd5e1;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #38bdf8;
+}
+
+/* Hero */
+.hero {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 8%;
+  background: radial-gradient(circle at top, #1e293b 0%, #0f172a 70%);
+}
+
+.hero-content {
+  max-width: 700px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 6px 14px;
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.hero p {
+  color: #94a3b8;
+  margin-bottom: 28px;
+  font-size: 1.1rem;
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 12px 28px;
+  background: #38bdf8;
+  color: #0f172a;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-primary:hover {
+  background: #7dd3fc;
+}
+
+/* Container & Materi */
+.container {
+  padding: 80px 8%;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: #94a3b8;
+  margin-bottom: 48px;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  background: #1e293b;
+  padding: 32px;
+  border-radius: 12px;
+  border: 1px solid #334155;
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: #38bdf8;
+}
+
+.card-icon {
+  font-size: 2.2rem;
+  margin-bottom: 16px;
+}
+
+.card h3 {
+  margin-bottom: 12px;
+  color: #f8fafc;
+}
+
+.card p {
+  color: #94a3b8;
+  font-size: 0.95rem;
+}
+
+/* Buku Tamu */
+.guestbook-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.guestbook-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 32px;
+}
+
+.guestbook-form input,
+.guestbook-form textarea {
+  padding: 14px;
+  border-radius: 8px;
+  border: 1px solid #334155;
+  background: #1e293b;
+  color: #f8fafc;
+  font-size: 1rem;
+}
+
+.guestbook-form input:focus,
+.guestbook-form textarea:focus {
+  outline: none;
+  border-color: #38bdf8;
+}
+
+.message-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.message-item {
+  background: #1e293b;
+  padding: 16px;
+  border-radius: 8px;
+  border-left: 4px solid #38bdf8;
+}
+
+.message-item h4 {
+  color: #38bdf8;
+  margin-bottom: 4px;
+}
+
+.message-item p {
+  color: #cbd5e1;
+  font-size: 0.95rem;
+}
+
+footer {
+  text-align: center;
+  padding: 24px;
+  border-top: 1px solid #1e293b;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 600px) {
+  .hero h1 { font-size: 2rem; }
+  .nav-links { gap: 14px; font-size: 0.9rem; }
+}
