@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portal TKJ | Ujian Praktek</title>
   <link rel="stylesheet" href="style.css">
-  <!-- Library Supabase -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
@@ -14,74 +12,41 @@
   <nav class="navbar">
     <div class="logo">TKJ<span>.Net</span></div>
     <ul class="nav-links">
-      <li><a href="#beranda">Beranda</a></li>
-      <li><a href="#materi">Materi TKJ</a></li>
-      <li><a href="#bukutamu">Buku Tamu</a></li>
+      <li><a href="index.html" class="active">Beranda</a></li>
+      <li><a href="materi1.html">Materi 1</a></li>
+      <li><a href="materi2.html">Materi 2</a></li>
+      <li><a href="materi3.html">Materi 3 & Buku Tamu</a></li>
     </ul>
   </nav>
 
   <!-- Hero Section -->
-  <header id="beranda" class="hero">
+  <header class="hero">
     <div class="hero-content">
       <span class="badge">Ujian Praktek Teknik Komputer & Jaringan</span>
-      <h1>Membangun Infrastruktur Digital Masa Depan</h1>
-      <p>Portal pembelajaran ringkas seputar jaringan komputer, perakitan perangkat keras, dan administrasi server dengan standar industri.</p>
-      <a href="#materi" class="btn-primary">Jelajahi Materi</a>
+      <h1>Portal Pembelajaran & Kompetensi TKJ</h1>
+      <p>Website ini berisi rangkuman materi kejuruan Teknik Komputer dan Jaringan. Silakan pilih materi di bawah atau melalui menu navigasi untuk mulai membaca.</p>
+      
+      <!-- Tombol pilihan materi per halaman -->
+      <div class="menu-button-grid">
+        <a href="materi1.html" class="btn-card">
+          <h3>Materi 1 ➔</h3>
+          <p>Instalasi Jaringan LAN & WAN</p>
+        </a>
+        <a href="materi2.html" class="btn-card">
+          <h3>Materi 2 ➔</h3>
+          <p>Manajemen Mikrotik & Routing</p>
+        </a>
+        <a href="materi3.html" class="btn-card">
+          <h3>Materi 3 ➔</h3>
+          <p>Administrasi Sistem & Buku Tamu</p>
+        </a>
+      </div>
     </div>
   </header>
 
-  <!-- Section 3 Materi TKJ -->
-  <section id="materi" class="container">
-    <h2 class="section-title">Materi Inti TKJ</h2>
-    <p class="section-subtitle">Tiga kompetensi dasar yang wajib dikuasai oleh siswa Teknik Komputer dan Jaringan.</p>
-
-    <div class="card-grid">
-      <!-- Materi 1 -->
-      <div class="card">
-        <div class="card-icon">🔌</div>
-        <h3>1. Instalasi Jaringan LAN & WAN</h3>
-        <p>Memahami topologi jaringan, teknik <em>crimping</em> kabel UTP (Straight & Cross), serta konfigurasi dasar perangkat jaringan seperti Switch, Access Point, dan Router.</p>
-      </div>
-
-      <!-- Materi 2 -->
-      <div class="card">
-        <div class="card-icon">🌐</div>
-        <h3>2. Manajemen Mikrotik & Routing</h3>
-        <p>Konfigurasi IP Address, DHCP Server, Firewall, NAT, hingga manajemen <em>bandwidth</em> (Simple Queue) menggunakan perangkat RouterBoard Mikrotik.</p>
-      </div>
-
-      <!-- Materi 3 -->
-      <div class="card">
-        <div class="card-icon">🖥️</div>
-        <h3>3. Administrasi Sistem Jaringan</h3>
-        <p>Instalasi dan pengelolaan sistem operasi berbasis Linux (Debian/Ubuntu Server) untuk membangun Web Server, DNS Server, dan keamanan jaringan.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section Buku Tamu (Koneksi Supabase) -->
-  <section id="bukutamu" class="container">
-    <h2 class="section-title">Buku Tamu Penguji</h2>
-    <p class="section-subtitle">Silakan tinggalkan komentar atau penilaian untuk website ujian praktek ini.</p>
-
-    <div class="guestbook-wrapper">
-      <form id="guestbook-form" class="guestbook-form">
-        <input type="text" id="nama" placeholder="Nama Anda (Contoh: Guru Penguji)" required>
-        <textarea id="pesan" rows="3" placeholder="Tulis pesan atau kesan..." required></textarea>
-        <button type="submit" class="btn-primary">Kirim Pesan</button>
-      </form>
-
-      <div id="daftar-pesan" class="message-list">
-        <p class="loading-text">Memuat pesan...</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
   <footer>
-    <p>&copy; 2026 Ujian Praktek TKJ • Dibuat dengan GitHub, Supabase & Vercel</p>
+    <p>&copy; 2026 Ujian Praktek TKJ • Dibuat dengan GitHub & Vercel</p>
   </footer>
 
-  <script src="script.js"></script>
 </body>
 </html>
