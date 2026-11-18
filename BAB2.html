@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bab 2 - Manajemen MikroTik dan Routing</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">TJKT<span>.Net</span></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Beranda</a></li>
+      <li><a href="materi1.html">Bab 1 (LAN & WAN)</a></li>
+      <li><a href="materi2.html" class="active">Bab 2 (MikroTik)</a></li>
+      <li><a href="materi3.html">Bab 3 (Admin Server)</a></li>
+    </ul>
+  </nav>
+
+  <main class="container-materi">
+    <div class="breadcrumb">
+      <a href="index.html">← Kembali ke Beranda</a>
+    </div>
+
+    <span class="badge">Bab 2 dari 3</span>
+    <h1>Manajemen MikroTik dan Routing</h1>
+    
+    <div class="content-box">
+      <h3>A. Pengertian MikroTik & Fiturnya[span_26](start_span)[span_26](end_span)</h3>
+      <p>MikroTik adalah perangkat dan sistem operasi jaringan (<strong>RouterOS</strong>) yang digunakan untuk mengatur dan mengontrol lalu lintas data[span_27](start_span)[span_27](end_span). Untuk mengonfigurasinya secara grafis (GUI), digunakan aplikasi <strong>WinBox</strong>[span_28](start_span)[span_28](end_span).</p>
+      <p><strong>Fitur Utama MikroTik:</strong> IP Address, DHCP Server/Client, DNS, NAT, Firewall, Hotspot, Bandwidth Management, dan Routing[span_29](start_span)[span_29](end_span).</p>
+
+      <h3>B. Routing Jaringan[span_30](start_span)[span_30](end_span)</h3>
+      <p>Routing adalah proses menentukan jalur pengiriman paket data dari satu jaringan ke jaringan lainnya[span_31](start_span)[span_31](end_span). Jenis routing dibagi dua:</p>
+      <ul>
+        <li><strong>Static Routing:</strong> Jalur ditentukan secara manual oleh administrator[span_32](start_span)[span_32](end_span).</li>
+        <li><strong>Dynamic Routing:</strong> Jalur diperbarui otomatis oleh protokol routing (seperti OSPF, RIP, BGP)[span_33](start_span)[span_33](end_span).</li>
+      </ul>
+
+      <h3>C. NAT & Manajemen Bandwidth[span_34](start_span)[span_34](end_span)</h3>
+      <p><strong>NAT (Network Address Translation)</strong> mengubah IP sumber/tujuan, di mana <em>Masquerade</em> sering digunakan untuk berbagi koneksi internet[span_35](start_span)[span_35](end_span). Adapun <strong>Manajemen Bandwidth</strong> mengatur kecepatan internet klien menggunakan fitur seperti <em>Simple Queue</em>[span_36](start_span)[span_36](end_span).</p>
+
+      <h3>D. Dasar Konfigurasi & Pengujian MikroTik[span_37](start_span)[span_37](end_span)</h3>
+      <p>Urutan dasar konfigurasi: Buka WinBox ➔ Atur Identitas Router ➔ IP Address ➔ DHCP Client/WAN ➔ DHCP Server LAN ➔ DNS ➔ NAT ➔ Uji Koneksi[span_38](start_span)[span_38](end_span). Pengujian dilakukan dengan melakukan <em>ping</em> ke gateway/internet serta memeriksa tabel routing[span_39](start_span)[span_39](end_span).</p>
+    </div>
+
+    <!-- Navigasi Bawah -->
+    <div class="pagination">
+      <a href="materi1.html" class="btn-secondary">← Kembali ke Bab 1</a>
+      <a href="materi3.html" class="btn-primary">Lanjut ke Bab 3 ➔</a>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Ujian Praktek TJKT Kelas XI</p>
+  </footer>
+
+</body>
+</html>
