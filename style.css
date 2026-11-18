@@ -3,13 +3,15 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  scroll-behavior: smooth;
 }
 
 body {
   background-color: #0f172a;
   color: #f8fafc;
   line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 /* Navbar */
@@ -17,8 +19,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 8%;
-  background: rgba(15, 23, 42, 0.9);
+  padding: 18px 8%;
+  background: rgba(15, 23, 42, 0.95);
   backdrop-filter: blur(10px);
   position: sticky;
   top: 0;
@@ -27,7 +29,7 @@ body {
 }
 
 .logo {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 700;
   color: #f8fafc;
 }
@@ -39,23 +41,25 @@ body {
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 24px;
+  gap: 20px;
 }
 
 .nav-links a {
   text-decoration: none;
   color: #cbd5e1;
   font-weight: 500;
+  font-size: 0.95rem;
   transition: color 0.3s;
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links a.active {
   color: #38bdf8;
 }
 
-/* Hero */
+/* Hero / Beranda */
 .hero {
-  min-height: 80vh;
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -65,7 +69,7 @@ body {
 }
 
 .hero-content {
-  max-width: 700px;
+  max-width: 750px;
 }
 
 .badge {
@@ -80,27 +84,136 @@ body {
 }
 
 .hero h1 {
-  font-size: 2.8rem;
+  font-size: 2.5rem;
   line-height: 1.2;
   margin-bottom: 16px;
 }
 
 .hero p {
   color: #94a3b8;
-  margin-bottom: 28px;
+  margin-bottom: 32px;
+  font-size: 1.05rem;
+}
+
+/* Menu Pilihan di Beranda */
+.menu-button-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  text-align: left;
+}
+
+.btn-card {
+  background: #1e293b;
+  border: 1px solid #334155;
+  padding: 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.btn-card:hover {
+  transform: translateY(-4px);
+  border-color: #38bdf8;
+}
+
+.btn-card h3 {
+  color: #38bdf8;
   font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+
+.btn-card p {
+  color: #94a3b8;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+/* Container Halaman Materi */
+.container-materi {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 50px 8%;
+  flex: 1;
+  width: 100%;
+}
+
+.breadcrumb {
+  margin-bottom: 20px;
+}
+
+.breadcrumb a {
+  color: #38bdf8;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.container-materi h1 {
+  font-size: 2.2rem;
+  margin-bottom: 24px;
+}
+
+.content-box {
+  background: #1e293b;
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid #334155;
+  margin-bottom: 24px;
+}
+
+.content-box h3 {
+  color: #38bdf8;
+  margin-bottom: 12px;
+  margin-top: 16px;
+}
+
+.content-box h3:first-child {
+  margin-top: 0;
+}
+
+.content-box p {
+  color: #cbd5e1;
+  margin-bottom: 14px;
+}
+
+.content-box ul {
+  padding-left: 20px;
+  color: #cbd5e1;
+}
+
+.content-box li {
+  margin-bottom: 8px;
+}
+
+/* Form Buku Tamu */
+.guestbook-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.guestbook-form input,
+.guestbook-form textarea {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #334155;
+  background: #0f172a;
+  color: #f8fafc;
+  font-size: 0.95rem;
 }
 
 .btn-primary {
   display: inline-block;
-  padding: 12px 28px;
+  padding: 10px 22px;
   background: #38bdf8;
   color: #0f172a;
   font-weight: 600;
   text-decoration: none;
-  border-radius: 8px;
+  border-radius: 6px;
   border: none;
   cursor: pointer;
+  text-align: center;
   transition: background 0.3s;
 }
 
@@ -108,118 +221,43 @@ body {
   background: #7dd3fc;
 }
 
-/* Container & Materi */
-.container {
-  padding: 80px 8%;
-}
-
-.section-title {
-  text-align: center;
-  font-size: 2rem;
-  margin-bottom: 8px;
-}
-
-.section-subtitle {
-  text-align: center;
-  color: #94a3b8;
-  margin-bottom: 48px;
-}
-
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
-}
-
-.card {
-  background: #1e293b;
-  padding: 32px;
-  border-radius: 12px;
-  border: 1px solid #334155;
-  transition: transform 0.3s, border-color 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-6px);
-  border-color: #38bdf8;
-}
-
-.card-icon {
-  font-size: 2.2rem;
-  margin-bottom: 16px;
-}
-
-.card h3 {
-  margin-bottom: 12px;
+.btn-secondary {
+  display: inline-block;
+  padding: 10px 22px;
+  background: #334155;
   color: #f8fafc;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 6px;
+  border: none;
+  text-align: center;
+  transition: background 0.3s;
 }
 
-.card p {
-  color: #94a3b8;
-  font-size: 0.95rem;
+.btn-secondary:hover {
+  background: #475569;
 }
 
-/* Buku Tamu */
-.guestbook-wrapper {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.guestbook-form {
+/* Navigasi Bawah Antar Halaman (Pagination) */
+.pagination {
   display: flex;
-  flex-direction: column;
-  gap: 14px;
-  margin-bottom: 32px;
-}
-
-.guestbook-form input,
-.guestbook-form textarea {
-  padding: 14px;
-  border-radius: 8px;
-  border: 1px solid #334155;
-  background: #1e293b;
-  color: #f8fafc;
-  font-size: 1rem;
-}
-
-.guestbook-form input:focus,
-.guestbook-form textarea:focus {
-  outline: none;
-  border-color: #38bdf8;
-}
-
-.message-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.message-item {
-  background: #1e293b;
-  padding: 16px;
-  border-radius: 8px;
-  border-left: 4px solid #38bdf8;
-}
-
-.message-item h4 {
-  color: #38bdf8;
-  margin-bottom: 4px;
-}
-
-.message-item p {
-  color: #cbd5e1;
-  font-size: 0.95rem;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
 }
 
 footer {
   text-align: center;
-  padding: 24px;
+  padding: 20px;
   border-top: 1px solid #1e293b;
   color: #64748b;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  background: #0f172a;
 }
 
 @media (max-width: 600px) {
-  .hero h1 { font-size: 2rem; }
-  .nav-links { gap: 14px; font-size: 0.9rem; }
+  .hero h1 { font-size: 1.8rem; }
+  .nav-links { display: none; } /* Sederhana di HP */
+  .pagination { flex-direction: column; gap: 10px; }
+  .pagination a { width: 100%; }
 }
