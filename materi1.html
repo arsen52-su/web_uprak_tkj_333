@@ -8,7 +8,7 @@
 </head>
 <body>
 
- <!-- LOADING SCREEN (Tambahkan ini di bawah <body>) -->
+  <!-- LOADING SCREEN -->
   <div id="loading-screen" aria-hidden="true">
     <div class="loader-content">
       <div class="water-ring">
@@ -19,17 +19,21 @@
     </div>
   </div>
 
-  </div>
-  <!-- Background Environment Ocean Dream -->
+  <!-- BACKGROUND LAUT -->
   <div class="ocean-environment" aria-hidden="true">
     <div class="ocean-depth-bg"></div>
     <div class="ocean-caustics"></div>
+    <div id="bubbles-layer" class="bubbles-layer"></div>
   </div>
 
+  <!-- NAVBAR -->
   <header class="navbar scrolled">
     <div class="nav-container">
-      <a href="index.html" class="brand-logo"><span>TJKT.Net</span></a>
-      <ul class="nav-links" style="list-style: none; display: flex; gap: 20px;">
+      <a href="index.html" class="brand-logo">
+        <svg class="logo-icon" viewBox="0 0 36 36" fill="none" style="width:24px;height:24px;color:var(--soft-cyan);"><circle cx="18" cy="18" r="16" stroke="currentColor" stroke-width="2"/></svg>
+        <span>TJKT.Net</span>
+      </a>
+      <ul class="nav-list" style="list-style: none; display: flex; gap: 24px;">
         <li><a href="index.html" class="nav-link">Beranda</a></li>
         <li><a href="materi1.html" class="nav-link active">Bab 1</a></li>
         <li><a href="materi2.html" class="nav-link">Bab 2</a></li>
@@ -38,6 +42,7 @@
     </div>
   </header>
 
+  <!-- KONTEN MATERI -->
   <main class="container-materi">
     <div class="breadcrumb">
       <a href="index.html">← Kembali ke Beranda</a>
@@ -73,11 +78,13 @@
     </div>
   </main>
 
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-bottom">
-      <p>&copy; 2026 Ujian Praktek TJKT Kelas XI</p>
+      <p>&copy; 2026 Ujian Praktek TJKT Kelas XI — Triyan Ananda Pratama</p>
     </div>
   </footer>
-  
+
+  <script src="script.js"></script>
 </body>
 </html>
