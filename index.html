@@ -1,76 +1,466 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" data-theme="day">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WEB TJKT Kelas XI | Ujian Praktek</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ocean Dream — An Immersive Underwater Fantasy World</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <noscript>
+    <style>
+      #loading-screen { display: none !important; }
+      .reveal { opacity: 1 !important; transform: none !important; }
+    </style>
+  </noscript>
 </head>
 <body>
 
-  <!-- Navigasi -->
-  <nav class="navbar">
-    <div class="logo">TJKT<span>.Net</span></div>
-    <ul class="nav-links">
-      <li><a href="index.html" class="active">Beranda</a></li>
-      <li><a href="materi1.html">Bab 1 (LAN & WAN)</a></li>
-      <li><a href="materi2.html">Bab 2 (MikroTik)</a></li>
-      <li><a href="materi3.html">Bab 3 (Admin Server)</a></li>
-      <li><a href="#profil">Profil & Penutup</a></li>
-    </ul>
-  </nav>
+  <!-- 8. ANIMATED LOADING SCREEN -->
+  <div id="loading-screen" aria-hidden="true">
+    <div class="loader-bubbles" id="loader-bubbles"></div>
+    <div class="loader-content">
+      <div class="water-ring">
+        <div class="water-wave"></div>
+      </div>
+      <h2 class="loader-title">OCEAN DREAM</h2>
+      <p class="loader-subtitle">Diving into another world...</p>
+    </div>
+  </div>
 
-  <!-- Hero Section (Bagian Atas) -->
-  <header class="hero">
-    <div class="hero-content">
-      <span class="badge">Ujian Praktek Teknik Jaringan Komputer & Telekomunikasi</span>
-      <h1>Portal Pembelajaran Produktif TJKT Kelas XI</h1>
-      <p>Website resmi rangkuman materi kejuruan TJKT. Silakan pilih bab materi di bawah untuk mulai mempelajari materi ujian.</p>
-      
-      <!-- Tombol pilihan materi per halaman -->
-      <div class="menu-button-grid" style="margin-bottom: 50px;">
-        <a href="materi1.html" class="btn-card">
-          <h3>Bab 1 ➔</h3>
-          <p>Instalasi Jaringan LAN dan WAN</p>
-        </a>
-        <a href="materi2.html" class="btn-card">
-          <h3>Bab 2 ➔</h3>
-          <p>Manajemen MikroTik dan Routing</p>
-        </a>
-        <a href="materi3.html" class="btn-card">
-          <h3>Bab 3 ➔</h3>
-          <p>Administrasi Sistem Jaringan</p>
-        </a>
+  <!-- 6. CUSTOM CURSOR TRAIL CONTAINER (Desktop) -->
+  <div id="cursor-trail-container" aria-hidden="true"></div>
+
+  <!-- 2, 3, 4. IMMERSIVE ANIMATED UNDERWATER ENVIRONMENT -->
+  <div class="ocean-environment" aria-hidden="true">
+    <!-- Depth Layer 1: Water Gradient & Caustics -->
+    <div class="ocean-depth-bg"></div>
+    <div class="ocean-caustics"></div>
+
+    <!-- Ocean Surface & Light Rays -->
+    <div class="ocean-surface">
+      <div class="surface-shimmer"></div>
+      <div class="light-rays">
+        <div class="ray ray-1"></div>
+        <div class="ray ray-2"></div>
+        <div class="ray ray-3"></div>
+        <div class="ray ray-4"></div>
+        <div class="ray ray-5"></div>
+      </div>
+    </div>
+
+    <!-- Parallax Far Layer: Distant Sea Turtle & Silhouettes -->
+    <div class="parallax-layer layer-far" data-speed="0.15">
+      <svg class="creature sea-turtle" viewBox="0 0 220 120" fill="none">
+        <path d="M55 62C55 40 90 25 130 30C160 34 178 48 182 60C172 72 145 78 110 76C80 75 55 70 55 62Z" fill="currentColor" opacity="0.45"/>
+        <path d="M178 56C192 50 208 52 214 58C210 66 195 68 180 64Z" fill="currentColor" opacity="0.5"/>
+        <path d="M135 68C125 90 100 106 82 108C92 90 105 74 118 66Z" fill="currentColor" opacity="0.55"/>
+        <path d="M75 68C62 82 44 88 32 86C44 76 55 68 65 64Z" fill="currentColor" opacity="0.4"/>
+      </svg>
+    </div>
+
+    <!-- Parallax Mid Layer: Swimming Fish Schools & Glowing Jellyfish -->
+    <div class="parallax-layer layer-mid" data-speed="0.3">
+      <!-- Jellyfish 1 -->
+      <div class="jellyfish-wrapper jf-1">
+        <svg class="creature jellyfish" viewBox="0 0 140 200" fill="none">
+          <defs>
+            <radialGradient id="jfGrad1" cx="50%" cy="35%" r="60%">
+              <stop offset="0%" stop-color="#F5FFFF" stop-opacity="0.9"/>
+              <stop offset="55%" stop-color="#A6EDF2" stop-opacity="0.55"/>
+              <stop offset="100%" stop-color="#087E9B" stop-opacity="0.25"/>
+            </radialGradient>
+          </defs>
+          <path d="M20 75C20 35 45 15 70 15C95 15 120 35 120 75C105 84 88 80 70 84C52 80 35 84 20 75Z" fill="url(#jfGrad1)" stroke="#A6EDF2" stroke-width="1.5"/>
+          <path class="tentacle t1" d="M40 80C35 115 48 145 38 185" stroke="#A6EDF2" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+          <path class="tentacle t2" d="M58 83C64 120 50 155 60 192" stroke="#F5FFFF" stroke-width="2.2" stroke-linecap="round" opacity="0.85"/>
+          <path class="tentacle t3" d="M75 83C70 125 84 155 74 195" stroke="#65C9D8" stroke-width="2" stroke-linecap="round" opacity="0.75"/>
+          <path class="tentacle t4" d="M96 80C102 115 88 145 98 182" stroke="#A6EDF2" stroke-width="1.8" stroke-linecap="round" opacity="0.65"/>
+        </svg>
       </div>
 
-      <!-- BAGIAN PROFIL & PENUTUP (Digabung di Beranda) -->
-      <div id="profil" class="profile-card-wrapper" style="margin-top: 40px; text-align: left;">
-        <div style="text-align: center;">
-          <div class="profile-image-container">
-            <!-- Pastikan nama file foto di bawah ini sama persis dengan yang di GitHub -->
-            <img src="foto-profil.jpeg" alt="Foto Profil Pembuat" class="profile-img" onerror="this.src='foto.jpg'">
-          </div>
-          <span class="badge">Dibuat Oleh</span>
-          <h2>Nama Kamu</h2>
-          <p class="profile-role">Siswa Kelas XI • Teknik Jaringan Komputer & Telekomunikasi (TJKT)</p>
-        </div>
-        
-        <div class="quote-box">
-          <p>"Terima kasih kepada Guru Penguji dan semua pihak yang telah membimbing serta mendukung kelancaran Ujian Praktek kejuruan ini. Semoga website ini dapat bermanfaat dan memenuhi standar penilaian."</p>
-        </div>
-
-        <div class="thank-you-banner" style="text-align: center;">
-          <h3>✨ Thank You! ✨</h3>
-          <p>Semoga hasil ujian praktek ini mendapat nilai terbaik dan memuaskan aaminn</p>
-        </div>
+      <!-- Jellyfish 2 -->
+      <div class="jellyfish-wrapper jf-2">
+        <svg class="creature jellyfish" viewBox="0 0 140 200" fill="none">
+          <path d="M25 72C25 38 48 18 70 18C92 18 115 38 115 72C100 80 85 76 70 80C55 76 40 80 25 72Z" fill="url(#jfGrad1)" stroke="#D7F4F1" stroke-width="1.5"/>
+          <path class="tentacle t1" d="M45 78C40 110 52 140 42 175" stroke="#D7F4F1" stroke-width="1.8" stroke-linecap="round" opacity="0.7"/>
+          <path class="tentacle t2" d="M70 80C76 115 62 150 72 185" stroke="#F5FFFF" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+          <path class="tentacle t3" d="M92 78C98 110 86 140 96 172" stroke="#65C9D8" stroke-width="1.8" stroke-linecap="round" opacity="0.65"/>
+        </svg>
       </div>
 
+      <!-- Fish School -->
+      <div class="fish-group fg-1">
+        <svg class="creature fish fish-1" viewBox="0 0 80 40" fill="none">
+          <path d="M18 20C32 6 54 8 68 20C54 32 32 34 18 20Z" fill="#65C9D8" opacity="0.85"/>
+          <path d="M20 20L4 10L8 20L4 30L20 20Z" fill="#A6EDF2" opacity="0.8"/>
+          <circle cx="56" cy="18" r="2.2" fill="#071D35"/>
+        </svg>
+        <svg class="creature fish fish-2" viewBox="0 0 80 40" fill="none">
+          <path d="M18 20C32 6 54 8 68 20C54 32 32 34 18 20Z" fill="#A6EDF2" opacity="0.75"/>
+          <path d="M20 20L4 10L8 20L4 30L20 20Z" fill="#D7F4F1" opacity="0.7"/>
+          <circle cx="56" cy="18" r="2" fill="#071D35"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Dynamic Particles, Stars & Rising Bubbles -->
+    <div id="bubbles-layer" class="bubbles-layer"></div>
+    <div id="particles-layer" class="particles-layer"></div>
+
+    <!-- Foreground Seabed: Coral Reef, Seaweed & Starfish -->
+    <div class="seabed-layer">
+      <svg class="seabed-svg" viewBox="0 0 1440 240" preserveAspectRatio="none" fill="none">
+        <!-- Back Reef Silhouette -->
+        <path d="M0 160Q180 110 360 155T720 145T1080 160T1440 135V240H0Z" fill="#073B59" opacity="0.65"/>
+        <!-- Swaying Seaweed Left -->
+        <path class="seaweed sw-1" d="M110 240C95 190 125 150 105 95C125 140 140 185 128 240Z" fill="#087E9B"/>
+        <path class="seaweed sw-2" d="M145 240C160 185 130 140 155 80C170 135 178 185 162 240Z" fill="#65C9D8" opacity="0.75"/>
+        <!-- Glowing Coral Cluster -->
+        <path class="coral-glow" d="M320 240C315 205 290 190 295 165C305 180 322 190 328 160C336 185 352 175 358 155C362 185 342 205 340 240Z" fill="#65C9D8"/>
+        <!-- Swaying Seaweed Right -->
+        <path class="seaweed sw-3" d="M1260 240C1245 180 1275 135 1255 75C1278 125 1292 178 1278 240Z" fill="#087E9B"/>
+        <path class="seaweed sw-1" d="M1305 240C1320 195 1295 155 1315 105C1330 150 1335 195 1320 240Z" fill="#A6EDF2" opacity="0.65"/>
+        <!-- Front Seabed Ridge -->
+        <path d="M0 195Q240 165 480 195T960 185T1440 195V240H0Z" fill="#071D35"/>
+        <!-- Decorative Starfish -->
+        <path class="starfish" d="M540 206L545 194L550 206L562 208L553 216L555 228L545 222L535 228L537 216L528 208L540 206Z" fill="#A6EDF2"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- 9. NAVBAR -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="brand-logo">
+        <svg class="logo-icon" viewBox="0 0 36 36" fill="none">
+          <circle cx="18" cy="18" r="16" stroke="currentColor" stroke-width="2" opacity="0.5"/>
+          <path d="M8 20C12 14 16 24 20 18C23 13 26 19 29 17" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="18" cy="11" r="2.5" fill="currentColor"/>
+        </svg>
+        <span>Ocean Dream</span>
+      </a>
+
+      <nav class="nav-menu" id="nav-menu">
+        <ul class="nav-list">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#explore" class="nav-link">Explore</a></li>
+          <li><a href="#creatures" class="nav-link">Creatures</a></li>
+          <li><a href="#discover" class="nav-link">About</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- 7. DAY / NIGHT TOGGLE -->
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Day and Night Mode" title="Switch Ocean Atmosphere">
+          <span class="toggle-track">
+            <span class="toggle-icon sun-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="4"/>
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+              </svg>
+            </span>
+            <span class="toggle-icon moon-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+              </svg>
+            </span>
+            <span class="toggle-thumb"></span>
+          </span>
+          <span class="toggle-label" id="theme-label">Day</span>
+        </button>
+
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open Navigation Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </div>
   </header>
 
-  <footer>
-    <p>&copy; 2026 Ujian Praktek TJKT Kelas XI • Dibuat dengan GitHub & Vercel</p>
+  <main>
+    <!-- HERO SECTION -->
+    <section id="home" class="hero-section">
+      <div class="hero-container">
+        <div class="hero-badge reveal">
+          <span class="pulse-dot"></span>
+          <span>Subaquatic Sanctuary</span>
+        </div>
+        <h1 class="hero-title reveal">Dive Into Another World.</h1>
+        <p class="hero-subtitle reveal">
+          Discover the beauty hidden beneath the ocean. Drift through sun-dappled turquoise currents and bioluminescent twilight depths.
+        </p>
+        <div class="hero-cta-group reveal">
+          <a href="#explore" class="btn btn-primary">
+            <span>Explore the Ocean</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+          <a href="#discover" class="btn btn-secondary">
+            <span>Discover More</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Animated Scroll Indicator -->
+      <a href="#explore" class="scroll-indicator" aria-label="Scroll down to explore">
+        <span class="scroll-text">Scroll to Dive</span>
+        <div class="scroll-mouse">
+          <div class="scroll-wheel"></div>
+        </div>
+      </a>
+    </section>
+
+    <!-- EXPLORE SECTION -->
+    <section id="explore" class="section explore-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">Underwater Realms</span>
+          <h2 class="section-title">Explore Hidden Sanctuaries</h2>
+          <p class="section-desc">
+            Every layer of the sea holds an ecosystem sculpted by currents, light, and centuries of quiet evolution.
+          </p>
+        </div>
+
+        <div class="explore-grid">
+          <!-- Location Card 1 -->
+          <article class="glass-card explore-card tilt-card reveal">
+            <div class="card-visual visual-sunlit">
+              <svg class="scene-svg" viewBox="0 0 400 240" fill="none">
+                <defs>
+                  <linearGradient id="loc1" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#65C9D8"/>
+                    <stop offset="100%" stop-color="#073B59"/>
+                  </linearGradient>
+                </defs>
+                <rect width="400" height="240" fill="url(#loc1)"/>
+                <polygon points="80,0 160,0 240,240 40,240" fill="#F5FFFF" opacity="0.16"/>
+                <polygon points="220,0 290,0 360,240 180,240" fill="#A6EDF2" opacity="0.14"/>
+                <path d="M0 190Q100 155 200 185T400 175V240H0Z" fill="#087E9B" opacity="0.7"/>
+                <path d="M0 210Q120 185 240 210T400 200V240H0Z" fill="#071D35"/>
+                <circle cx="140" cy="110" r="5" fill="#F5FFFF" opacity="0.7"/>
+                <circle cx="270" cy="80" r="8" fill="#D7F4F1" opacity="0.5"/>
+              </svg>
+              <span class="depth-tag">Depth: 15m</span>
+            </div>
+            <div class="card-body">
+              <h3>Sunlit Coral Gardens</h3>
+              <p>Warm shallow reefs illuminated by shimmering caustics and teeming with vibrant marine flora.</p>
+            </div>
+          </article>
+
+          <!-- Location Card 2 -->
+          <article class="glass-card explore-card tilt-card reveal">
+            <div class="card-visual visual-abyss">
+              <svg class="scene-svg" viewBox="0 0 400 240" fill="none">
+                <defs>
+                  <linearGradient id="loc2" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#087E9B"/>
+                    <stop offset="100%" stop-color="#071D35"/>
+                  </linearGradient>
+                </defs>
+                <rect width="400" height="240" fill="url(#loc2)"/>
+                <path d="M90 240L130 90L170 240Z" fill="#073B59"/>
+                <path d="M230 240L280 65L330 240Z" fill="#073B59" opacity="0.85"/>
+                <circle cx="200" cy="95" r="24" fill="#A6EDF2" opacity="0.18"/>
+                <circle cx="200" cy="95" r="8" fill="#F5FFFF" opacity="0.8"/>
+                <circle cx="115" cy="130" r="3" fill="#65C9D8"/>
+                <circle cx="295" cy="120" r="4" fill="#A6EDF2"/>
+              </svg>
+              <span class="depth-tag">Depth: 220m</span>
+            </div>
+            <div class="card-body">
+              <h3>Bioluminescent Canyons</h3>
+              <p>Twilight trenches where drifting organisms paint the midnight current in soft ethereal cyan.</p>
+            </div>
+          </article>
+
+          <!-- Location Card 3 -->
+          <article class="glass-card explore-card tilt-card reveal">
+            <div class="card-visual visual-kelp">
+              <svg class="scene-svg" viewBox="0 0 400 240" fill="none">
+                <defs>
+                  <linearGradient id="loc3" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#0A6482"/>
+                    <stop offset="100%" stop-color="#072842"/>
+                  </linearGradient>
+                </defs>
+                <rect width="400" height="240" fill="url(#loc3)"/>
+                <path d="M80 240C65 170 95 110 75 30C95 95 110 165 98 240Z" fill="#65C9D8" opacity="0.45"/>
+                <path d="M185 240C205 160 175 95 198 20C215 90 220 160 202 240Z" fill="#A6EDF2" opacity="0.5"/>
+                <path d="M300 240C285 175 315 115 295 40C315 100 328 170 315 240Z" fill="#65C9D8" opacity="0.4"/>
+                <circle cx="240" cy="85" r="4" fill="#F5FFFF" opacity="0.75"/>
+              </svg>
+              <span class="depth-tag">Depth: 45m</span>
+            </div>
+            <div class="card-body">
+              <h3>Whispering Kelp Sanctuary</h3>
+              <p>Towering underwater forests swaying in rhythmic harmony with gentle pelagic tides.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CREATURES SECTION -->
+    <section id="creatures" class="section creatures-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-tag">Marine Inhabitants</span>
+          <h2 class="section-title">Graceful Dwellers of the Deep</h2>
+          <p class="section-desc">
+            Meet the luminous travelers that glide silently across currents and coral ridges.
+          </p>
+        </div>
+
+        <div class="creatures-grid">
+          <!-- Creature 1 -->
+          <div class="glass-card creature-card tilt-card reveal">
+            <div class="creature-emblem">
+              <svg viewBox="0 0 120 120" fill="none">
+                <path d="M25 55C25 28 45 14 60 14C75 14 95 28 95 55C83 62 72 58 60 62C48 58 37 62 25 55Z" fill="#A6EDF2" fill-opacity="0.45" stroke="#F5FFFF" stroke-width="2"/>
+                <path d="M42 60C38 82 46 95 40 108M60 62C64 85 56 98 62 112M78 60C82 82 74 95 80 108" stroke="#A6EDF2" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Moonlight Jellyfish</h3>
+            <span class="creature-latin">Aurelia Pelagica</span>
+            <p>Translucent bells pulsing effortlessly through calm waters, emitting a serene pearlescent aura in darkness.</p>
+          </div>
+
+          <!-- Creature 2 -->
+          <div class="glass-card creature-card tilt-card reveal">
+            <div class="creature-emblem">
+              <svg viewBox="0 0 120 120" fill="none">
+                <path d="M22 62C22 44 46 32 74 36C94 39 104 49 106 58C98 67 80 71 58 70C38 69 22 66 22 62Z" fill="#65C9D8" fill-opacity="0.55" stroke="#D7F4F1" stroke-width="2"/>
+                <path d="M74 66C66 84 50 96 38 98C45 84 54 72 62 65Z" fill="#A6EDF2"/>
+                <path d="M104 55C112 50 116 53 116 58C115 63 108 64 103 61Z" fill="#F5FFFF"/>
+              </svg>
+            </div>
+            <h3>Azure Sea Turtle</h3>
+            <span class="creature-latin">Chelonia Mystica</span>
+            <p>Ancient ocean voyagers gliding across thousands of miles using Earth's subtle magnetic currents.</p>
+          </div>
+
+          <!-- Creature 3 -->
+          <div class="glass-card creature-card tilt-card reveal">
+            <div class="creature-emblem">
+              <svg viewBox="0 0 120 120" fill="none">
+                <path d="M15 60C40 42 75 42 105 60C75 78 40 78 15 60Z" fill="#087E9B" fill-opacity="0.6" stroke="#A6EDF2" stroke-width="2"/>
+                <path d="M15 60L4 55M15 60L4 65" stroke="#F5FFFF" stroke-width="2" stroke-linecap="round"/>
+                <circle cx="84" cy="57" r="2.5" fill="#F5FFFF"/>
+              </svg>
+            </div>
+            <h3>Crystal Manta Ray</h3>
+            <span class="creature-latin">Mobula Serena</span>
+            <p>Gentle giants soaring like birds beneath the waves, filtering plankton in graceful underwater arcs.</p>
+          </div>
+
+          <!-- Creature 4 -->
+          <div class="glass-card creature-card tilt-card reveal">
+            <div class="creature-emblem">
+              <svg viewBox="0 0 120 120" fill="none">
+                <path d="M30 60C48 44 74 46 92 60C74 74 48 76 30 60Z" fill="#D7F4F1" fill-opacity="0.65" stroke="#F5FFFF" stroke-width="2"/>
+                <path d="M32 60L16 48L20 60L16 72L32 60Z" fill="#65C9D8"/>
+                <circle cx="78" cy="58" r="2.5" fill="#071D35"/>
+              </svg>
+            </div>
+            <h3>Luminous Damselfish</h3>
+            <span class="creature-latin">Chromis Lumina</span>
+            <p>Darting in synchronized clouds above coral spires, reflecting sunbeams like scattered liquid silver.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DISCOVER / ABOUT EDITORIAL SECTION -->
+    <section id="discover" class="section discover-section">
+      <div class="container">
+        <div class="discover-layout">
+          <div class="discover-visual reveal">
+            <div class="editorial-frame tilt-card" id="editorial-parallax">
+              <svg class="editorial-svg" viewBox="0 0 520 600" fill="none">
+                <defs>
+                  <linearGradient id="edBg" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#65C9D8"/>
+                    <stop offset="45%" stop-color="#087E9B"/>
+                    <stop offset="100%" stop-color="#071D35"/>
+                  </linearGradient>
+                </defs>
+                <rect width="520" height="600" rx="24" fill="url(#edBg)"/>
+                <!-- Sunburst -->
+                <circle cx="260" cy="90" r="140" fill="#F5FFFF" opacity="0.14"/>
+                <polygon points="180,0 340,0 440,600 80,600" fill="#A6EDF2" opacity="0.1"/>
+                <!-- Floating Jellyfish Silhouette -->
+                <path d="M200 240C200 185 230 160 260 160C290 160 320 185 320 240C298 252 280 246 260 252C240 246 222 252 200 240Z" fill="#F5FFFF" opacity="0.7"/>
+                <path d="M230 248C224 310 238 360 226 420M260 252C266 320 252 375 264 440M290 248C296 310 282 360 294 415" stroke="#D7F4F1" stroke-width="2.5" stroke-linecap="round" opacity="0.75"/>
+                <!-- Reef Base -->
+                <path d="M0 490Q130 430 260 480T520 460V600H0Z" fill="#073B59"/>
+                <path d="M0 530Q180 490 360 530T520 515V600H0Z" fill="#071D35"/>
+              </svg>
+              <div class="frame-caption">
+                <span>Pelagic Twilight Zone</span>
+                <strong>71% of Earth's Living Tapestry</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="discover-content reveal">
+            <span class="section-tag">About Ocean Dream</span>
+            <h2 class="section-title">A Living Sanctuary Beneath the Waves</h2>
+            <p class="editorial-lead">
+              Beneath the restless shimmer of the ocean surface lies a realm of weightless serenity—where time slows down and light dances in liquid ribbons.
+            </p>
+            <p class="editorial-text">
+              Ocean Dream is crafted as a contemplative digital voyage into marine wonder. From sun-warmed coral gardens at dawn to the quiet bioluminescent glow of midnight waters, every current carries life, balance, and mystery.
+            </p>
+
+            <div class="discover-stats">
+              <div class="stat-item">
+                <span class="stat-number">11,000m</span>
+                <span class="stat-label">Deepest Ocean Trench</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">80%</span>
+                <span class="stat-label">Unexplored Seabed</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-bubbles" id="footer-bubbles" aria-hidden="true"></div>
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <a href="#home" class="brand-logo">
+          <svg class="logo-icon" viewBox="0 0 36 36" fill="none">
+            <circle cx="18" cy="18" r="16" stroke="currentColor" stroke-width="2" opacity="0.5"/>
+            <path d="M8 20C12 14 16 24 20 18C23 13 26 19 29 17" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="18" cy="11" r="2.5" fill="currentColor"/>
+          </svg>
+          <span>Ocean Dream</span>
+        </a>
+        <p class="footer-tagline">An Immersive Underwater Fantasy World crafted with light, depth, and wonder.</p>
+      </div>
+
+      <ul class="footer-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#explore">Explore</a></li>
+        <li><a href="#creatures">Creatures</a></li>
+        <li><a href="#discover">About</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Ocean Dream Sanctuary. All rights reserved.</p>
+    </div>
   </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>
