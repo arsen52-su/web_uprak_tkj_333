@@ -1,4 +1,446 @@
-/* EFEK KLIK / SENTUH (Riak Air / Ripple) */
+/* ==================================================
+   OCEAN DREAM — STYLES & LAYOUT
+   ================================================== */
+
+:root {
+  --deep-ocean: #073B59;
+  --ocean-blue: #087E9B;
+  --aqua: #65C9D8;
+  --sea-mist: #D7F4F1;
+  --soft-cyan: #A6EDF2;
+  --pearl-white: #F5FFFF;
+  --midnight-blue: #071D35;
+
+  --bg-top: #38A8C2;
+  --bg-mid: #087E9B;
+  --bg-bottom: #073B59;
+  --surface-glow: rgba(245, 255, 255, 0.45);
+  --ray-color: rgba(215, 244, 241, 0.22);
+  --text-primary: #F5FFFF;
+  --text-secondary: #D7F4F1;
+  --text-muted: rgba(215, 244, 241, 0.78);
+  --glass-bg: rgba(7, 59, 89, 0.34);
+  --glass-border: rgba(166, 237, 242, 0.28);
+}
+
+[data-theme="night"] {
+  --bg-top: #072947;
+  --bg-mid: #071D35;
+  --bg-bottom: #04101F;
+  --surface-glow: rgba(166, 237, 242, 0.24);
+  --ray-color: rgba(101, 201, 216, 0.12);
+  --glass-bg: rgba(7, 29, 53, 0.55);
+  --glass-border: rgba(101, 201, 216, 0.32);
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--text-primary);
+  background-color: var(--midnight-blue);
+  line-height: 1.65;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+h1, h2, h3, .brand-logo {
+  font-family: 'Poppins', sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* LOADING SCREEN */
+#loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: linear-gradient(180deg, #087E9B 0%, #073B59 55%, #071D35 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+#loading-screen.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loader-content {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.water-ring {
+  width: 84px;
+  height: 84px;
+  margin: 0 auto 24px;
+  border-radius: 50%;
+  border: 2px solid rgba(166, 237, 242, 0.35);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 28px rgba(101, 201, 216, 0.35);
+}
+
+.water-wave {
+  position: absolute;
+  bottom: -40%;
+  left: -25%;
+  width: 150%;
+  height: 150%;
+  background: rgba(101, 201, 216, 0.45);
+  border-radius: 40%;
+  animation: waveFill 2.8s ease-in-out infinite;
+}
+
+.loader-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  color: var(--pearl-white);
+  margin-bottom: 8px;
+}
+
+.loader-subtitle {
+  font-size: 0.92rem;
+  color: var(--soft-cyan);
+}
+
+@keyframes waveFill {
+  0%, 100% { transform: translateY(15%) rotate(0deg); }
+  50% { transform: translateY(-10%) rotate(180deg); }
+}
+
+/* OCEAN ENVIRONMENT BACKGROUND */
+.ocean-environment {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.ocean-depth-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-mid) 45%, var(--bg-bottom) 100%);
+}
+
+.ocean-caustics {
+  position: absolute;
+  inset: -20%;
+  opacity: 0.22;
+  background-image:
+    radial-gradient(ellipse at 30% 20%, rgba(245, 255, 255, 0.35) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 30%, rgba(166, 237, 242, 0.3) 0%, transparent 45%);
+}
+
+.bubbles-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.ocean-bubble {
+  position: absolute;
+  bottom: -40px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(245, 255, 255, 0.8), rgba(166, 237, 242, 0.15) 65%, transparent 100%);
+  border: 1px solid rgba(245, 255, 255, 0.35);
+  animation: riseBubble 12s ease-in infinite;
+}
+
+@keyframes riseBubble {
+  0% { transform: translateY(0) scale(0.8); opacity: 0; }
+  50% { opacity: 0.7; }
+  100% { transform: translateY(-110vh) scale(1.15); opacity: 0; }
+}
+
+/* NAVBAR */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 20px 0;
+  background: var(--glass-bg);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-logo {
+  text-decoration: none;
+  color: var(--pearl-white);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  gap: 34px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+.nav-link:hover, .nav-link.active { color: var(--pearl-white); }
+
+.nav-actions { display: flex; align-items: center; gap: 16px; }
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(7, 29, 53, 0.45);
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  padding: 5px 12px 5px 6px;
+  color: var(--pearl-white);
+  cursor: pointer;
+}
+
+.toggle-track {
+  position: relative;
+  width: 50px; height: 26px;
+  background: rgba(8, 126, 155, 0.45);
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6px;
+}
+
+.toggle-thumb {
+  position: absolute;
+  top: 3px; left: 3px;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--pearl-white);
+  transition: transform 0.4s ease;
+}
+[data-theme="night"] .toggle-thumb { transform: translateX(24px); background: var(--soft-cyan); }
+.toggle-label { font-size: 0.82rem; font-weight: 600; min-width: 36px; }
+
+/* HERO SECTION */
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 24px 80px;
+  position: relative;
+}
+
+.hero-container { max-width: 820px; margin: 0 auto; z-index: 2; }
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(12px);
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--soft-cyan);
+  margin-bottom: 24px;
+}
+
+.pulse-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--soft-cyan);
+  box-shadow: 0 0 10px var(--soft-cyan);
+}
+
+.hero-title {
+  font-size: clamp(2.6rem, 6vw, 4.75rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 22px;
+  color: var(--pearl-white);
+}
+
+.hero-subtitle {
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  color: var(--text-secondary);
+  max-width: 620px;
+  margin: 0 auto 38px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 30px;
+  border-radius: 999px;
+  font-size: 0.96rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+.btn:hover { transform: translateY(-4px); }
+.btn-primary {
+  background: linear-gradient(135deg, var(--aqua) 0%, var(--ocean-blue) 100%);
+  color: var(--pearl-white);
+  border: 1px solid rgba(245, 255, 255, 0.35);
+  box-shadow: 0 10px 28px rgba(8, 126, 155, 0.45);
+}
+
+/* SECTIONS & CARDS */
+.section { padding: 110px 0; position: relative; z-index: 2; }
+.section-header { text-align: center; max-width: 650px; margin: 0 auto 60px; }
+.section-tag { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--soft-cyan); margin-bottom: 12px; display: block; }
+.section-title { font-size: clamp(1.9rem, 3.8vw, 2.75rem); color: var(--pearl-white); margin-bottom: 16px; }
+.section-desc { color: var(--text-muted); font-size: 1.05rem; }
+
+.explore-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  gap: 28px;
+}
+
+.glass-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 22px;
+  backdrop-filter: blur(16px);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+.glass-card:hover { transform: translateY(-4px); border-color: var(--soft-cyan); }
+
+.depth-tag {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(7, 29, 53, 0.65);
+  border: 1px solid rgba(166, 237, 242, 0.35);
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--soft-cyan);
+}
+
+/* STYLING HALAMAN MATERI (BAB 1, 2, 3) */
+.container-materi {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 120px 24px 70px;
+  position: relative;
+  z-index: 2;
+}
+
+.breadcrumb { margin-bottom: 20px; }
+.breadcrumb a {
+  display: inline-block;
+  padding: 8px 18px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  color: var(--soft-cyan);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.container-materi .badge {
+  display: inline-block;
+  padding: 6px 16px;
+  background: rgba(101, 201, 216, 0.2);
+  border: 1px solid var(--soft-cyan);
+  border-radius: 999px;
+  color: var(--soft-cyan);
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.container-materi h1 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  color: var(--pearl-white);
+  margin-bottom: 28px;
+}
+
+.content-box {
+  background: rgba(7, 29, 53, 0.72);
+  border: 1px solid var(--glass-border);
+  border-radius: 22px;
+  padding: 36px 32px;
+  backdrop-filter: blur(18px);
+  margin-bottom: 32px;
+}
+
+.content-box h3 {
+  color: var(--soft-cyan);
+  font-size: 1.22rem;
+  margin-top: 26px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgba(166, 237, 242, 0.2);
+  padding-bottom: 8px;
+}
+.content-box h3:first-child { margin-top: 0; }
+.content-box p { color: var(--text-secondary); margin-bottom: 14px; }
+.content-box ul { padding-left: 22px; margin-bottom: 16px; color: var(--text-secondary); }
+.content-box li { margin-bottom: 10px; }
+.content-box li strong, .content-box p strong { color: var(--pearl-white); }
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.pagination .btn-primary, .pagination .btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--pearl-white);
+}
+
+/* EFEK KLIK / SENTUH (Riak Air) */
 .click-ripple {
   position: fixed;
   width: 12px;
@@ -13,12 +455,16 @@
 }
 
 @keyframes rippleEffect {
-  0% {
-    transform: translate(-50%, -50%) scale(0.5);
-    opacity: 1;
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(6.5);
-    opacity: 0;
-  }
+  0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(6.5); opacity: 0; }
+}
+
+/* FOOTER */
+.footer {
+  position: relative;
+  z-index: 2;
+  background: #071D35;
+  border-top: 1px solid var(--glass-border);
+  padding: 40px 0;
+  text-align: center;
 }
