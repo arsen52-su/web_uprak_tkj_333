@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" data-theme="day">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,15 +8,23 @@
 </head>
 <body>
 
-  <nav class="navbar">
-    <div class="logo">TJKT<span>.Net</span></div>
-    <ul class="nav-links">
-      <li><a href="index.html">Beranda</a></li>
-      <li><a href="materi1.html" class="active">Bab 1 (LAN & WAN)</a></li>
-      <li><a href="materi2.html">Bab 2 (MikroTik)</a></li>
-      <li><a href="materi3.html">Bab 3 (Admin Server)</a></li>
-    </ul>
-  </nav>
+  <!-- Background Environment Ocean Dream -->
+  <div class="ocean-environment" aria-hidden="true">
+    <div class="ocean-depth-bg"></div>
+    <div class="ocean-caustics"></div>
+  </div>
+
+  <header class="navbar scrolled">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo"><span>TJKT.Net</span></a>
+      <ul class="nav-links" style="list-style: none; display: flex; gap: 20px;">
+        <li><a href="index.html" class="nav-link">Beranda</a></li>
+        <li><a href="materi1.html" class="nav-link active">Bab 1</a></li>
+        <li><a href="materi2.html" class="nav-link">Bab 2</a></li>
+        <li><a href="materi3.html" class="nav-link">Bab 3</a></li>
+      </ul>
+    </div>
+  </header>
 
   <main class="container-materi">
     <div class="breadcrumb">
@@ -45,30 +53,18 @@
         <li><strong>Access Point:</strong> Menghubungkan perangkat ke jaringan melalui Wi-Fi.</li>
         <li><strong>Kabel UTP & Konektor RJ45:</strong> Media penghantar data dan alat penghubung kabel ke perangkat.</li>
       </ul>
-
-      <h3>D. Jenis Kabel & Susunan Kabel LAN</h3>
-      <p>Jenis kabel meliputi <strong>UTP</strong>, <strong>STP</strong>, dan <strong>Fiber Optic</strong>. Susunan kabel Ethernet dibagi menjadi dua standar utama:</p>
-      <ul>
-        <li><strong>Straight:</strong> Standar sama di kedua ujung (T568B–T568B).</li>
-        <li><strong>Crossover:</strong> Standar berbeda di kedua ujung (T568A–T568B).</li>
-      </ul>
-
-      <h3>E. Pengujian Jaringan (Command Prompt)</h3>
-      <ul>
-        <li><code>ping</code>: Menguji koneksi jaringan.</li>
-        <li><code>ipconfig</code>: Melihat konfigurasi IP Windows secara lengkap.</li>
-        <li><code>tracert</code>: Melihat jalur paket menuju tujuan.</li>
-      </ul>
     </div>
 
     <div class="pagination">
-      <span></span>
-      <a href="materi2.html" class="btn-primary">Lanjut ke Bab 2: MikroTik ➔</a>
+      <a href="index.html" class="btn-secondary">← Beranda</a>
+      <a href="materi2.html" class="btn-primary">Lanjut ke Bab 2 ➔</a>
     </div>
   </main>
 
-  <footer>
-    <p>&copy; 2026 Ujian Praktek TJKT Kelas XI</p>
+  <footer class="footer">
+    <div class="footer-bottom">
+      <p>&copy; 2026 Ujian Praktek TJKT Kelas XI</p>
+    </div>
   </footer>
 
 </body>
