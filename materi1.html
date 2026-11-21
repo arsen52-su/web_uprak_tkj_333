@@ -7,33 +7,24 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <!-- LOADING SCREEN -->
   <div id="loading-screen" aria-hidden="true">
     <div class="loader-content">
-      <div class="water-ring">
-        <div class="water-wave"></div>
-      </div>
+      <div class="water-ring"><div class="water-wave"></div></div>
       <h2 class="loader-title">OCEAN DREAM</h2>
       <p class="loader-subtitle">Loading stage...</p>
     </div>
   </div>
 
-  <!-- BACKGROUND LAUT -->
   <div class="ocean-environment" aria-hidden="true">
     <div class="ocean-depth-bg"></div>
     <div class="ocean-caustics"></div>
     <div id="bubbles-layer" class="bubbles-layer"></div>
   </div>
 
-  <!-- NAVBAR -->
-  <header class="navbar scrolled">
+  <header class="navbar">
     <div class="nav-container">
-      <a href="index.html" class="brand-logo">
-        <svg class="logo-icon" viewBox="0 0 36 36" fill="none" style="width:24px;height:24px;color:var(--soft-cyan);"><circle cx="18" cy="18" r="16" stroke="currentColor" stroke-width="2"/></svg>
-        <span>TJKT.Net</span>
-      </a>
-      <ul class="nav-list" style="list-style: none; display: flex; gap: 24px;">
+      <a href="index.html" class="brand-logo"><span>TJKT.Net</span></a>
+      <ul class="nav-list">
         <li><a href="index.html" class="nav-link">Beranda</a></li>
         <li><a href="materi1.html" class="nav-link active">Bab 1</a></li>
         <li><a href="materi2.html" class="nav-link">Bab 2</a></li>
@@ -42,49 +33,27 @@
     </div>
   </header>
 
-  <!-- KONTEN MATERI -->
   <main class="container-materi">
-    <div class="breadcrumb">
-      <a href="index.html">← Kembali ke Beranda</a>
-    </div>
-
+    <div class="breadcrumb"><a href="index.html">← Kembali ke Beranda</a></div>
     <span class="badge">Bab 1 dari 3</span>
     <h1>Instalasi Jaringan LAN dan WAN</h1>
-    
     <div class="content-box">
       <h3>A. Pengertian Jaringan Komputer</h3>
       <p>Jaringan komputer adalah hubungan antara dua perangkat atau lebih yang saling terhubung untuk bertukar data, informasi, dan berbagi sumber daya.</p>
-      <p><strong>Contoh penggunaan:</strong> Berbagi file antarkomputer, menggunakan printer secara bersama, berbagi koneksi internet, dan mengakses server.</p>
-
       <h3>B. Jenis-Jenis Jaringan</h3>
       <ul>
-        <li><strong>LAN (Local Area Network):</strong> Jangkauan wilayah kecil seperti rumah, sekolah, lab, atau kantor.</li>
-        <li><strong>MAN (Metropolitan Area Network):</strong> Menghubungkan beberapa jaringan dalam wilayah satu kota.</li>
-        <li><strong>WAN (Wide Area Network):</strong> Jangkauan geografis sangat luas hingga antarnegara (Contoh: Internet).</li>
-      </ul>
-
-      <h3>C. Perangkat Jaringan</h3>
-      <ul>
-        <li><strong>Router:</strong> Menghubungkan dua jaringan atau lebih dan menentukan jalur pengiriman data.</li>
-        <li><strong>Switch:</strong> Menghubungkan beberapa perangkat dalam satu jaringan LAN.</li>
-        <li><strong>Access Point:</strong> Menghubungkan perangkat ke jaringan melalui Wi-Fi.</li>
-        <li><strong>Kabel UTP & Konektor RJ45:</strong> Media penghantar data dan alat penghubung kabel ke perangkat.</li>
+        <li><strong>LAN:</strong> Jangkauan wilayah kecil seperti sekolah atau lab.</li>
+        <li><strong>MAN:</strong> Menghubungkan beberapa jaringan dalam satu kota.</li>
+        <li><strong>WAN:</strong> Jangkauan geografis sangat luas antarnegara (Internet).</li>
       </ul>
     </div>
-
     <div class="pagination">
       <a href="index.html" class="btn-secondary">← Beranda</a>
       <a href="materi2.html" class="btn-primary">Lanjut ke Bab 2 ➔</a>
     </div>
   </main>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer-bottom">
-      <p>&copy; 2026 Ujian Praktek TJKT Kelas XI — Triyan Ananda Pratama</p>
-    </div>
-  </footer>
-
+  <footer class="footer"><p style="color: var(--text-muted);">&copy; 2026 Ujian Praktek TJKT Kelas XI</p></footer>
   <script src="script.js"></script>
 </body>
 </html>
