@@ -7,12 +7,9 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
   <div id="loading-screen" aria-hidden="true">
     <div class="loader-content">
-      <div class="water-ring">
-        <div class="water-wave"></div>
-      </div>
+      <div class="water-ring"><div class="water-wave"></div></div>
       <h2 class="loader-title">OCEAN DREAM</h2>
       <p class="loader-subtitle">Loading stage...</p>
     </div>
@@ -21,12 +18,13 @@
   <div class="ocean-environment" aria-hidden="true">
     <div class="ocean-depth-bg"></div>
     <div class="ocean-caustics"></div>
+    <div id="bubbles-layer" class="bubbles-layer"></div>
   </div>
 
-  <header class="navbar scrolled">
+  <header class="navbar">
     <div class="nav-container">
       <a href="index.html" class="brand-logo"><span>TJKT.Net</span></a>
-      <ul class="nav-list" style="list-style: none; display: flex; gap: 24px;">
+      <ul class="nav-list">
         <li><a href="index.html" class="nav-link">Beranda</a></li>
         <li><a href="materi1.html" class="nav-link">Bab 1</a></li>
         <li><a href="materi2.html" class="nav-link">Bab 2</a></li>
@@ -36,40 +34,26 @@
   </header>
 
   <main class="container-materi">
-    <div class="breadcrumb">
-      <a href="index.html">← Kembali ke Beranda</a>
-    </div>
-
+    <div class="breadcrumb"><a href="index.html">← Kembali ke Beranda</a></div>
     <span class="badge">Bab 3 dari 3</span>
     <h1>Administrasi Sistem Jaringan</h1>
-    
     <div class="content-box">
       <h3>A. Administrasi Server Jaringan</h3>
-      <p>Administrasi server adalah proses mengelola, mengonfigurasi, dan memelihara layanan server agar dapat diakses dengan aman dan stabil oleh klien dalam jaringan.</p>
-
+      <p>Mengelola, mengonfigurasi, dan memelihara layanan server agar aman dan stabil bagi klien.</p>
       <h3>B. Layanan Utama Server</h3>
       <ul>
-        <li><strong>DHCP Server:</strong> Memberikan alamat IP secara otomatis ke perangkat klien.</li>
-        <li><strong>DNS Server:</strong> Menerjemahkan alamat IP menjadi nama domain yang mudah diingat (misal: website.com).</li>
-        <li><strong>Web Server:</strong> Menyimpan dan menyajikan halaman website kepada pengguna (Contoh: Apache, Nginx).</li>
+        <li><strong>DHCP Server:</strong> Memberikan IP otomatis.</li>
+        <li><strong>DNS Server:</strong> Menerjemahkan IP ke nama domain.</li>
+        <li><strong>Web Server:</strong> Menyajikan halaman website (Apache/Nginx).</li>
       </ul>
-
-      <h3>C. Keamanan Jaringan & Maintenance</h3>
-      <p>Melakukan backup data secara berkala, memantau lalu lintas jaringan, serta menerapkan hak akses (firewall/user permission) untuk mencegah akses ilegal.</p>
     </div>
-
     <div class="pagination">
       <a href="materi2.html" class="btn-secondary">← Kembali ke Bab 2</a>
       <a href="index.html" class="btn-primary">Kembali ke Beranda 🏠</a>
     </div>
   </main>
 
-  <footer class="footer">
-    <div class="footer-bottom">
-      <p>&copy; 2026 Ujian Praktek TJKT Kelas XI — Triyan Ananda Pratama</p>
-    </div>
-  </footer>
-
+  <footer class="footer"><p style="color: var(--text-muted);">&copy; 2026 Ujian Praktek TJKT Kelas XI</p></footer>
   <script src="script.js"></script>
 </body>
 </html>
