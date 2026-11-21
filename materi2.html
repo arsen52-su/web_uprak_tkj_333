@@ -7,12 +7,9 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
   <div id="loading-screen" aria-hidden="true">
     <div class="loader-content">
-      <div class="water-ring">
-        <div class="water-wave"></div>
-      </div>
+      <div class="water-ring"><div class="water-wave"></div></div>
       <h2 class="loader-title">OCEAN DREAM</h2>
       <p class="loader-subtitle">Loading stage...</p>
     </div>
@@ -21,12 +18,13 @@
   <div class="ocean-environment" aria-hidden="true">
     <div class="ocean-depth-bg"></div>
     <div class="ocean-caustics"></div>
+    <div id="bubbles-layer" class="bubbles-layer"></div>
   </div>
 
-  <header class="navbar scrolled">
+  <header class="navbar">
     <div class="nav-container">
       <a href="index.html" class="brand-logo"><span>TJKT.Net</span></a>
-      <ul class="nav-list" style="list-style: none; display: flex; gap: 24px;">
+      <ul class="nav-list">
         <li><a href="index.html" class="nav-link">Beranda</a></li>
         <li><a href="materi1.html" class="nav-link">Bab 1</a></li>
         <li><a href="materi2.html" class="nav-link active">Bab 2</a></li>
@@ -36,41 +34,25 @@
   </header>
 
   <main class="container-materi">
-    <div class="breadcrumb">
-      <a href="index.html">← Kembali ke Beranda</a>
-    </div>
-
+    <div class="breadcrumb"><a href="index.html">← Kembali ke Beranda</a></div>
     <span class="badge">Bab 2 dari 3</span>
     <h1>Manajemen MikroTik dan Routing</h1>
-    
     <div class="content-box">
       <h3>A. Pengertian MikroTik & Fiturnya</h3>
-      <p>MikroTik adalah perangkat dan sistem operasi jaringan (RouterOS) yang digunakan untuk mengatur dan mengontrol lalu lintas data. Untuk mengonfigurasinya secara grafis (GUI), digunakan aplikasi WinBox.</p>
-      <p><strong>Fitur Utama MikroTik:</strong> IP Address, DHCP Server/Client, DNS, NAT, Firewall, Hotspot, Bandwidth Management, dan Routing.</p>
-
+      <p>MikroTik adalah sistem operasi jaringan (RouterOS) yang dikonfigurasi menggunakan WinBox untuk mengatur lalu lintas data.</p>
       <h3>B. Routing Jaringan</h3>
-      <p>Routing adalah proses menentukan jalur pengiriman paket data dari satu jaringan ke jaringan lainnya. Jenis routing dibagi dua:</p>
       <ul>
-        <li><strong>Static Routing:</strong> Jalur ditentukan secara manual oleh administrator.</li>
-        <li><strong>Dynamic Routing:</strong> Jalur diperbarui otomatis oleh protokol routing (seperti OSPF, RIP, BGP).</li>
+        <li><strong>Static Routing:</strong> Jalur ditentukan manual oleh administrator.</li>
+        <li><strong>Dynamic Routing:</strong> Jalur diperbarui otomatis oleh protokol router.</li>
       </ul>
-
-      <h3>C. NAT & Manajemen Bandwidth</h3>
-      <p>NAT (Network Address Translation) mengubah IP sumber/tujuan, di mana Masquerade sering digunakan untuk berbagi koneksi internet. Adapun Manajemen Bandwidth mengatur kecepatan internet klien menggunakan fitur seperti Simple Queue.</p>
     </div>
-
     <div class="pagination">
       <a href="materi1.html" class="btn-secondary">← Kembali ke Bab 1</a>
       <a href="materi3.html" class="btn-primary">Lanjut ke Bab 3 ➔</a>
     </div>
   </main>
 
-  <footer class="footer">
-    <div class="footer-bottom">
-      <p>&copy; 2026 Ujian Praktek TJKT Kelas XI — Triyan Ananda Pratama</p>
-    </div>
-  </footer>
-
+  <footer class="footer"><p style="color: var(--text-muted);">&copy; 2026 Ujian Praktek TJKT Kelas XI</p></footer>
   <script src="script.js"></script>
 </body>
 </html>
