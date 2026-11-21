@@ -1,5 +1,5 @@
 /* ==================================================
-   OCEAN DREAM — INTERACTIVE ENGINE & ANIMATION CONTROLLER
+   OCEAN DREAM — SCRIPT INTERAKTIF & LOADING PERPINDAHAN HALAMAN
    ================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* --------------------------------------------------
-     1. LOADING SCREEN CONTROLLER
+     1. LOADING SCREEN SAAT PERTAMA KALI DIBUKA
      -------------------------------------------------- */
   const loadingScreen = document.getElementById("loading-screen");
   const loaderBubbles = document.getElementById("loader-bubbles");
@@ -21,18 +21,61 @@ document.addEventListener("DOMContentLoaded", () => {
       if (loadingScreen) {
         loadingScreen.classList.add("hidden");
       }
-    }, 650);
+    }, 500);
   });
 
-  // Fallback jika load event terlewat
   setTimeout(() => {
     if (loadingScreen && !loadingScreen.classList.contains("hidden")) {
       loadingScreen.classList.add("hidden");
     }
-  }, 2500);
+  }, 2000);
 
   /* --------------------------------------------------
-     2. DAY & NIGHT ATMOSPHERE TOGGLE
+     2. LOADING SCREEN SAAT KLIK MENU / PINDAH MATERI
+     -------------------------------------------------- */
+  const internalLinks = document.querySelectorAll('a[href$=".html"], a[href^="index.html"]');
+  
+  internalLinks.forEach(link => {
+    link.addEventListener("click", function(e) {
+      const targetUrl = this.getAttribute("href");
+      
+      // Jangan jalankan jika link nya kosong atau anchor di halaman yang sama
+      if (!targetUrl || targetUrl.startsWith("#") || this.target === "_blank") return;
+
+      e.preventDefault(); // Tahan navigasi sebentar untuk memunculkan loading
+
+      if (loadingScreen) {
+        loadingScreen.classList.remove("hidden");
+        const subtitle = loadingScreen.querySelector(".loader-subtitle");
+        if (subtitle) subtitle.textContent = "Diving to next stage...";
+      }
+
+      setTimeout(() => {
+        window.location.href = targetUrl;
+      }, 450); // Jeda 0.45 detik agar efek loading-nya terasa mulus
+    });
+  });
+
+  /* --------------------------------------------------
+     3. EFEK KLIK / SENTUH (RIOS / RAK AIR)
+     -------------------------------------------------- */
+  document.addEventListener("click", (e) => {
+    // Jangan buat efek jika klik pada elemen input atau tombol khusus toggle
+    if (e.target.closest("button") && e.target.closest("#theme-toggle")) return;
+
+    const ripple = document.createElement("div");
+    ripple.className = "click-ripple";
+    ripple.style.left = `${e.clientX}px`;
+    ripple.style.top = `${e.clientY}px`;
+    document.body.appendChild(ripple);
+
+    setTimeout(() => {
+      ripple.remove();
+    }, 700);
+  });
+
+  /* --------------------------------------------------
+     4. DAY & NIGHT ATMOSPHERE TOGGLE
      -------------------------------------------------- */
   const htmlEl = document.documentElement;
   const themeToggleBtn = document.getElementById("theme-toggle");
@@ -57,23 +100,20 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* --------------------------------------------------
-     3. PROCEDURAL BUBBLES & LUMINOUS PARTICLES
+     5. PROCEDURAL BUBBLES & PARTICLES
      -------------------------------------------------- */
   const bubblesLayer = document.getElementById("bubbles-layer");
   const particlesLayer = document.getElementById("particles-layer");
-  const footerBubbles = document.getElementById("footer-bubbles");
 
   function createBubbles(container, count, minSize, maxSize) {
     if (!container) return;
     const fragment = document.createDocumentFragment();
-
     for (let i = 0; i < count; i++) {
       const bubble = document.createElement("span");
       bubble.className = "ocean-bubble";
-
       const size = Math.random() * (maxSize - minSize) + minSize;
       const left = Math.random() * 100;
-      const duration = Math.random() * 10 + 9; // 9s - 19s
+      const duration = Math.random() * 10 + 9;
       const delay = Math.random() * 12;
       const drift = (Math.random() - 0.5) * 90;
       const opacity = (Math.random() * 0.4 + 0.2).toFixed(2);
@@ -85,11 +125,6 @@ document.addEventListener("DOMContentLoaded", () => {
       bubble.style.animationDelay = `${delay}s`;
       bubble.style.setProperty("--drift", `${drift}px`);
       bubble.style.setProperty("--max-opacity", opacity);
-
-      if (size > 16) {
-        bubble.style.filter = "blur(1px)";
-      }
-
       fragment.appendChild(bubble);
     }
     container.appendChild(fragment);
@@ -98,11 +133,9 @@ document.addEventListener("DOMContentLoaded", () => {
   function createParticles(container, count) {
     if (!container) return;
     const fragment = document.createDocumentFragment();
-
     for (let i = 0; i < count; i++) {
       const dot = document.createElement("span");
       dot.className = "luminous-particle";
-
       const size = Math.random() * 3.5 + 1.5;
       const left = Math.random() * 100;
       const top = Math.random() * 100;
@@ -119,183 +152,13 @@ document.addEventListener("DOMContentLoaded", () => {
       dot.style.animationDelay = `${delay}s`;
       dot.style.setProperty("--drift-x", `${driftX}px`);
       dot.style.setProperty("--drift-y", `${driftY}px`);
-
       fragment.appendChild(dot);
     }
     container.appendChild(fragment);
   }
 
-  if (!prefersReducedMotion) {
-    const bubbleCount = isMobile ? 14 : 30;
-    const particleCount = isMobile ? 18 : 42;
-    createBubbles(bubblesLayer, bubbleCount, 5, 22);
-    createParticles(particlesLayer, particleCount);
-    createBubbles(footerBubbles, isMobile ? 8 : 16, 4, 14);
+  if (!prefersReducedMotion && bubblesLayer) {
+    createBubbles(bubblesLayer, isMobile ? 12 : 25, 5, 20);
+    createParticles(particlesLayer, isMobile ? 15 : 35);
   }
-
-  /* --------------------------------------------------
-     4. NAVBAR STICKY BLUR & MOBILE MENU
-     -------------------------------------------------- */
-  const navbar = document.getElementById("navbar");
-  const mobileMenuBtn = document.getElementById("mobile-menu-btn");
-  const navMenu = document.getElementById("nav-menu");
-  const navLinks = document.querySelectorAll(".nav-link");
-
-  window.addEventListener("scroll", () => {
-    if (navbar) {
-      navbar.classList.toggle("scrolled", window.scrollY > 40);
-    }
-  }, { passive: true });
-
-  if (mobileMenuBtn && navMenu) {
-    mobileMenuBtn.addEventListener("click", () => {
-      navMenu.classList.toggle("open");
-    });
-
-    navLinks.forEach((link) => {
-      link.addEventListener("click", () => {
-        navMenu.classList.remove("open");
-      });
-    });
-  }
-
-  /* --------------------------------------------------
-     5. MULTI-LAYER PARALLAX SCROLLING & MOUSE PARALLAX
-     -------------------------------------------------- */
-  const parallaxLayers = document.querySelectorAll(".parallax-layer");
-  const editorialParallax = document.getElementById("editorial-parallax");
-
-  let scrollY = window.scrollY;
-  let mouseX = 0;
-  let mouseY = 0;
-  let targetMouseX = 0;
-  let targetMouseY = 0;
-
-  window.addEventListener("scroll", () => {
-    scrollY = window.scrollY;
-  }, { passive: true });
-
-  if (!isMobile && !prefersReducedMotion) {
-    window.addEventListener("mousemove", (e) => {
-      targetMouseX = (e.clientX / window.innerWidth - 0.5) * 2;
-      targetMouseY = (e.clientY / window.innerHeight - 0.5) * 2;
-    }, { passive: true });
-  }
-
-  function animateParallax() {
-    if (!prefersReducedMotion) {
-      mouseX += (targetMouseX - mouseX) * 0.06;
-      mouseY += (targetMouseY - mouseY) * 0.06;
-
-      parallaxLayers.forEach((layer) => {
-        const speed = parseFloat(layer.getAttribute("data-speed")) || 0.2;
-        const yOffset = -(scrollY * speed);
-        const xMouse = mouseX * (speed * 45);
-        const yMouse = mouseY * (speed * 35);
-        layer.style.transform = `translate3d(${xMouse}px, ${yOffset + yMouse}px, 0)`;
-      });
-
-      if (editorialParallax && !isMobile) {
-        const rect = editorialParallax.getBoundingClientRect();
-        if (rect.top < window.innerHeight && rect.bottom > 0) {
-          const progress = (rect.top - window.innerHeight / 2) * 0.04;
-          editorialParallax.style.transform = `translateY(${progress}px)`;
-        }
-      }
-    }
-    requestAnimationFrame(animateParallax);
-  }
-  requestAnimationFrame(animateParallax);
-
-  /* --------------------------------------------------
-     6. INTERACTIVE CURSOR BUBBLE TRAIL (Desktop Only)
-     -------------------------------------------------- */
-  const trailContainer = document.getElementById("cursor-trail-container");
-  let lastTrailTime = 0;
-
-  if (!isMobile && !prefersReducedMotion && trailContainer) {
-    window.addEventListener("mousemove", (e) => {
-      const now = Date.now();
-      if (now - lastTrailTime < 45) return; // Throttle untuk performa optimal
-      lastTrailTime = now;
-
-      const bubble = document.createElement("span");
-      bubble.className = "cursor-bubble";
-      const size = Math.random() * 8 + 4;
-
-      bubble.style.width = `${size}px`;
-      bubble.style.height = `${size}px`;
-      bubble.style.left = `${e.clientX}px`;
-      bubble.style.top = `${e.clientY}px`;
-
-      trailContainer.appendChild(bubble);
-
-      setTimeout(() => {
-        bubble.remove();
-      }, 900);
-    }, { passive: true });
-  }
-
-  /* --------------------------------------------------
-     7. 3D TILT & LIGHT REFLECTION ON CARDS
-     -------------------------------------------------- */
-  const tiltCards = document.querySelectorAll(".tilt-card");
-
-  if (!isMobile && !prefersReducedMotion) {
-    tiltCards.forEach((card) => {
-      card.addEventListener("mousemove", (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        card.style.setProperty("--mouse-x", `${x}px`);
-        card.style.setProperty("--mouse-y", `${y}px`);
-
-        const rotateY = ((x / rect.width) - 0.5) * 8;
-        const rotateX = ((y / rect.height) - 0.5) * -8;
-
-        card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
-      });
-
-      card.addEventListener("mouseleave", () => {
-        card.style.transform = "perspective(900px) rotateX(0deg) rotateY(0deg) translateY(0)";
-      });
-    });
-  }
-
-  /* --------------------------------------------------
-     8. SCROLL REVEAL & ACTIVE NAVIGATION HIGHLIGHT
-     -------------------------------------------------- */
-  const revealElements = document.querySelectorAll(".reveal");
-  const sections = document.querySelectorAll("section[id]");
-
-  const revealObserver = new IntersectionObserver(
-    (entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.14 }
-  );
-
-  revealElements.forEach((el) => revealObserver.observe(el));
-
-  const navObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const id = entry.target.getAttribute("id");
-          navLinks.forEach((link) => {
-            link.classList.toggle("active", link.getAttribute("href") === `#${id}`);
-          });
-        }
-      });
-    },
-    { rootMargin: "-40% 0px -50% 0px" }
-  );
-
-  sections.forEach((section) => navObserver.observe(section));
 });
