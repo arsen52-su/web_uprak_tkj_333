@@ -37,15 +37,30 @@
     <div class="breadcrumb"><a href="index.html">← Kembali ke Beranda</a></div>
     <span class="badge">Bab 2 dari 3</span>
     <h1>Manajemen MikroTik dan Routing</h1>
+    
     <div class="content-box">
-      <h3>A. Pengertian MikroTik & Fiturnya</h3>
-      <p>MikroTik adalah sistem operasi jaringan (RouterOS) yang dikonfigurasi menggunakan WinBox untuk mengatur lalu lintas data.</p>
-      <h3>B. Routing Jaringan</h3>
+      <h3>1. Mengenal MikroTik dan RouterOS</h3>
+      <p>MikroTik itu perangkat router handal yang di dalamnya jalan sistem operasi bernama <strong>RouterOS</strong>. Buat ngatur-ngatur konfigurasinya, biasanya kita pakai aplikasi khusus di komputer Windows yang namanya <strong>WinBox</strong> (lewat GUI biar gampang diklik-klik).</p>
+
+      <h3>2. Konfigurasi Dasar di MikroTik</h3>
+      <p>Sebelum jaringan bisa jalan normal, ada beberapa langkah awal wajib yang biasa kita setting:</p>
       <ul>
-        <li><strong>Static Routing:</strong> Jalur ditentukan manual oleh administrator.</li>
-        <li><strong>Dynamic Routing:</strong> Jalur diperbarui otomatis oleh protokol router.</li>
+        <li><strong>IP Address:</strong> Mengatur alamat IP di setiap port interface (misal ether1 buat internet dari ISP, ether2 buat jalur lokal ke client).</li>
+        <li><strong>DHCP Client & Server:</strong> DHCP Client dipakai supaya router bisa nangkep internet dari sumber luar secara otomatis, sedangkan DHCP Server bikin router otomatis bagi-bagi IP ke komputer client.</li>
+        <li><strong>DNS (Domain Name System):</strong> Mengatur peladen DNS (misal pakai <code>8.8.8.8</code>) supaya komputer client bisa buka google.com pakai nama teks, bukan cuma angka IP doang.</li>
+      </ul>
+
+      <h3>3. NAT (Network Address Translation) & Masquerade</h3>
+      <p>Nah, fitur ini penting banget supaya komputer lokal (yang pakai IP lokal/private) bisa ikut nyambung ke internet publik. Di MikroTik, kita biasanya pakai aturan <code>IP > Firewall > NAT</code> dengan action <strong>masquerade</strong>.</p>
+
+      <h3>4. Konsep Routing Jaringan</h3>
+      <p>Routing adalah mekanisme pengiriman paket data dari satu jaringan ke jaringan lain lewat jalur terbaik. Dibagi jadi dua jenis utama:</p>
+      <ul>
+        <li><strong>Static Routing:</strong> Jalur rutenya kita ketik dan daftarkan secara manual satu-satu oleh administrator jaringan. Cocok buat jaringan skala kecil.</li>
+        <li><strong>Dynamic Routing:</strong> Jalur rutenya bisa dicari dan di-update sendiri secara otomatis antar router pakai protokol khusus (contohnya OSPF atau RIP).</li>
       </ul>
     </div>
+
     <div class="pagination">
       <a href="materi1.html" class="btn-secondary">← Kembali ke Bab 1</a>
       <a href="materi3.html" class="btn-primary">Lanjut ke Bab 3 ➔</a>
