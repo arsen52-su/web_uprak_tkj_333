@@ -8,18 +8,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
-  <noscript>
-    <style>
-      #loading-screen { display: none !important; }
-      .reveal { opacity: 1 !important; transform: none !important; }
-    </style>
-  </noscript>
 </head>
 <body>
 
-  <!-- ANIMATED LOADING SCREEN -->
+  <!-- LOADING SCREEN -->
   <div id="loading-screen" aria-hidden="true">
-    <div class="loader-bubbles" id="loader-bubbles"></div>
     <div class="loader-content">
       <div class="water-ring">
         <div class="water-wave"></div>
@@ -29,14 +22,10 @@
     </div>
   </div>
 
-  <!-- CUSTOM CURSOR TRAIL CONTAINER -->
-  <div id="cursor-trail-container" aria-hidden="true"></div>
-
-  <!-- ANIMATED UNDERWATER ENVIRONMENT -->
+  <!-- OCEAN BACKGROUND ENVIRONMENT -->
   <div class="ocean-environment" aria-hidden="true">
     <div class="ocean-depth-bg"></div>
     <div class="ocean-caustics"></div>
-
     <div class="ocean-surface">
       <div class="surface-shimmer"></div>
       <div class="light-rays">
@@ -47,78 +36,23 @@
         <div class="ray ray-5"></div>
       </div>
     </div>
-
-    <!-- Parallax Far Layer -->
-    <div class="parallax-layer layer-far" data-speed="0.15">
-      <svg class="creature sea-turtle" viewBox="0 0 220 120" fill="none">
-        <path d="M55 62C55 40 90 25 130 30C160 34 178 48 182 60C172 72 145 78 110 76C80 75 55 70 55 62Z" fill="currentColor" opacity="0.45"/>
-        <path d="M178 56C192 50 208 52 214 58C210 66 195 68 180 64Z" fill="currentColor" opacity="0.5"/>
-        <path d="M135 68C125 90 100 106 82 108C92 90 105 74 118 66Z" fill="currentColor" opacity="0.55"/>
-        <path d="M75 68C62 82 44 88 32 86C44 76 55 68 65 64Z" fill="currentColor" opacity="0.4"/>
-      </svg>
-    </div>
-
-    <!-- Parallax Mid Layer -->
-    <div class="parallax-layer layer-mid" data-speed="0.3">
-      <div class="jellyfish-wrapper jf-1">
-        <svg class="creature jellyfish" viewBox="0 0 140 200" fill="none">
-          <defs>
-            <radialGradient id="jfGrad1" cx="50%" cy="35%" r="60%">
-              <stop offset="0%" stop-color="#F5FFFF" stop-opacity="0.9"/>
-              <stop offset="55%" stop-color="#A6EDF2" stop-opacity="0.55"/>
-              <stop offset="100%" stop-color="#087E9B" stop-opacity="0.25"/>
-            </radialGradient>
-          </defs>
-          <path d="M20 75C20 35 45 15 70 15C95 15 120 35 120 75C105 84 88 80 70 84C52 80 35 84 20 75Z" fill="url(#jfGrad1)" stroke="#A6EDF2" stroke-width="1.5"/>
-          <path class="tentacle t1" d="M40 80C35 115 48 145 38 185" stroke="#A6EDF2" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
-          <path class="tentacle t2" d="M58 83C64 120 50 155 60 192" stroke="#F5FFFF" stroke-width="2.2" stroke-linecap="round" opacity="0.85"/>
-          <path class="tentacle t3" d="M75 83C70 125 84 155 74 195" stroke="#65C9D8" stroke-width="2" stroke-linecap="round" opacity="0.75"/>
-          <path class="tentacle t4" d="M96 80C102 115 88 145 98 182" stroke="#A6EDF2" stroke-width="1.8" stroke-linecap="round" opacity="0.65"/>
-        </svg>
-      </div>
-
-      <div class="fish-group fg-1">
-        <svg class="creature fish fish-1" viewBox="0 0 80 40" fill="none">
-          <path d="M18 20C32 6 54 8 68 20C54 32 32 34 18 20Z" fill="#65C9D8" opacity="0.85"/>
-          <path d="M20 20L4 10L8 20L4 30L20 20Z" fill="#A6EDF2" opacity="0.8"/>
-          <circle cx="56" cy="18" r="2.2" fill="#071D35"/>
-        </svg>
-      </div>
-    </div>
-
     <div id="bubbles-layer" class="bubbles-layer"></div>
     <div id="particles-layer" class="particles-layer"></div>
-
-    <div class="seabed-layer">
-      <svg class="seabed-svg" viewBox="0 0 1440 240" preserveAspectRatio="none" fill="none">
-        <path d="M0 160Q180 110 360 155T720 145T1080 160T1440 135V240H0Z" fill="#073B59" opacity="0.65"/>
-        <path class="seaweed sw-1" d="M110 240C95 190 125 150 105 95C125 140 140 185 128 240Z" fill="#087E9B"/>
-        <path d="M0 195Q240 165 480 195T960 185T1440 195V240H0Z" fill="#071D35"/>
-      </svg>
-    </div>
   </div>
 
   <!-- NAVBAR -->
   <header class="navbar" id="navbar">
     <div class="nav-container">
       <a href="#home" class="brand-logo">
-        <svg class="logo-icon" viewBox="0 0 36 36" fill="none">
-          <circle cx="18" cy="18" r="16" stroke="currentColor" stroke-width="2" opacity="0.5"/>
-          <path d="M8 20C12 14 16 24 20 18C23 13 26 19 29 17" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-          <circle cx="18" cy="11" r="2.5" fill="currentColor"/>
-        </svg>
         <span>Ocean Dream</span>
       </a>
-
       <nav class="nav-menu" id="nav-menu">
         <ul class="nav-list">
           <li><a href="#home" class="nav-link active">Home</a></li>
           <li><a href="#materi" class="nav-link">Materi Ujian</a></li>
-          <li><a href="#explore" class="nav-link">Explore</a></li>
           <li><a href="#profil" class="nav-link">Profil</a></li>
         </ul>
       </nav>
-
       <div class="nav-actions">
         <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Day and Night Mode">
           <span class="toggle-track">
@@ -136,15 +70,15 @@
     <!-- HERO SECTION -->
     <section id="home" class="hero-section">
       <div class="hero-container">
-        <div class="hero-badge reveal">
+        <div class="hero-badge">
           <span class="pulse-dot"></span>
           <span>Ujian Praktek TJKT Kelas XI</span>
         </div>
-        <h1 class="hero-title reveal">Ocean Dream Portfolio.</h1>
-        <p class="hero-subtitle reveal">
+        <h1 class="hero-title">Ocean Dream Portfolio.</h1>
+        <p class="hero-subtitle">
           Portal pembelajaran produktif TJKT dengan pengalaman bawah laut yang imersif dan interaktif.
         </p>
-        <div class="hero-cta-group reveal">
+        <div class="hero-cta-group">
           <a href="#materi" class="btn btn-primary">
             <span>Pilih Bab Materi</span>
           </a>
@@ -152,82 +86,48 @@
       </div>
     </section>
 
-    <!-- SECTION MATERI UJIAN (BAB 1, 2, 3) -->
+    <!-- SECTION MATERI UJIAN -->
     <section id="materi" class="section">
       <div class="container">
-        <div class="section-header reveal">
+        <div class="section-header">
           <span class="section-tag">Daftar Modul</span>
           <h2 class="section-title">Materi Pembelajaran TJKT</h2>
           <p class="section-desc">Silakan pilih bab materi di bawah untuk mulai mempelajari materi ujian.</p>
         </div>
 
         <div class="explore-grid">
-          <!-- Bab 1 -->
-          <a href="materi1.html" class="glass-card explore-card tilt-card reveal" style="text-decoration: none;">
+          <a href="materi1.html" class="glass-card explore-card" style="text-decoration: none;">
             <div class="card-body" style="padding: 35px;">
               <span class="depth-tag">Bab 1</span>
-              <h3 style="margin-top: 15px;">Instalasi Jaringan LAN dan WAN</h3>
-              <p>Mempelajari dasar jaringan, topologi, jenis kabel UTP, dan perintah dasar CMD.</p>
+              <h3 style="margin-top: 15px; color: var(--pearl-white);">Instalasi Jaringan LAN dan WAN</h3>
+              <p style="color: var(--text-muted);">Mempelajari dasar jaringan, topologi, jenis kabel UTP, dan perintah dasar CMD.</p>
             </div>
           </a>
 
-          <!-- Bab 2 -->
-          <a href="materi2.html" class="glass-card explore-card tilt-card reveal" style="text-decoration: none;">
+          <a href="materi2.html" class="glass-card explore-card" style="text-decoration: none;">
             <div class="card-body" style="padding: 35px;">
               <span class="depth-tag">Bab 2</span>
-              <h3 style="margin-top: 15px;">Manajemen MikroTik & Routing</h3>
-              <p>Konfigurasi RouterOS via WinBox, pengaturan IP, NAT Masquerade, dan Static Routing.</p>
+              <h3 style="margin-top: 15px; color: var(--pearl-white);">Manajemen MikroTik & Routing</h3>
+              <p style="color: var(--text-muted);">Konfigurasi RouterOS via WinBox, pengaturan IP, NAT Masquerade, dan Static Routing.</p>
             </div>
           </a>
 
-          <!-- Bab 3 -->
-          <a href="materi3.html" class="glass-card explore-card tilt-card reveal" style="text-decoration: none;">
+          <a href="materi3.html" class="glass-card explore-card" style="text-decoration: none;">
             <div class="card-body" style="padding: 35px;">
               <span class="depth-tag">Bab 3</span>
-              <h3 style="margin-top: 15px;">Administrasi Sistem Jaringan</h3>
-              <p>Pengelolaan layanan DHCP, DNS, Web Server, serta manajemen keamanan jaringan.</p>
+              <h3 style="margin-top: 15px; color: var(--pearl-white);">Administrasi Sistem Jaringan</h3>
+              <p style="color: var(--text-muted);">Pengelolaan layanan DHCP, DNS, Web Server, serta manajemen keamanan jaringan.</p>
             </div>
           </a>
         </div>
       </div>
     </section>
 
-    <!-- EXPLORE REALMS -->
-    <section id="explore" class="section explore-section">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="section-tag">Underwater Realms</span>
-          <h2 class="section-title">Sanctuary Visuals</h2>
-        </div>
-        <div class="explore-grid">
-          <article class="glass-card explore-card tilt-card reveal">
-            <div class="card-body">
-              <h3>Sunlit Coral Gardens</h3>
-              <p>Warm shallow reefs illuminated by shimmering caustics and vibrant marine flora.</p>
-            </div>
-          </article>
-          <article class="glass-card explore-card tilt-card reveal">
-            <div class="card-body">
-              <h3>Bioluminescent Canyons</h3>
-              <p>Twilight trenches where drifting organisms paint the midnight current in soft cyan.</p>
-            </div>
-          </article>
-          <article class="glass-card explore-card tilt-card reveal">
-            <div class="card-body">
-              <h3>Whispering Kelp Sanctuary</h3>
-              <p>Towering underwater forests swaying in rhythmic harmony with gentle pelagic tides.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- BAGIAN PROFIL PEMBUAT (FOTO PROFIL DISINI) -->
+    <!-- BAGIAN PROFIL PEMBUAT -->
     <section id="profil" class="section">
       <div class="container">
-        <div class="profile-card-wrapper reveal" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 24px; padding: 45px; text-align: center; backdrop-filter: blur(16px); max-width: 700px; margin: 0 auto;">
+        <div class="profile-card-wrapper" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 24px; padding: 45px; text-align: center; backdrop-filter: blur(16px); max-width: 700px; margin: 0 auto;">
           <div class="profile-image-container" style="width: 140px; height: 140px; margin: 0 auto 20px auto; border-radius: 50%; overflow: hidden; border: 3px solid var(--soft-cyan); box-shadow: 0 0 20px rgba(166,237,242,0.4);">
-            <!-- Pastikan file foto kamu bernama foto-profil.jpeg -->
             <img src="foto-profil.jpeg" alt="Foto Profil Pembuat" class="profile-img" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://via.placeholder.com/140?text=Foto+Profil'" />
           </div>
           <h2 style="color: var(--pearl-white); font-size: 1.8rem; margin-bottom: 6px;">Triyan Ananda Pratama</h2>
@@ -244,18 +144,9 @@
     </section>
   </main>
 
-  <!-- FOOTER -->
   <footer class="footer">
-    <div class="container footer-container">
-      <div class="footer-brand">
-        <a href="#home" class="brand-logo">
-          <span>Ocean Dream</span>
-        </a>
-        <p class="footer-tagline">An Immersive Underwater Fantasy World crafted for TJKT Practical Exam.</p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 Triyan Ananda Pratama — Kelas XI TJKT</p>
+    <div class="container footer-container" style="text-align: center;">
+      <p style="color: var(--text-muted);">&copy; 2026 Triyan Ananda Pratama — Kelas XI TJKT</p>
     </div>
   </footer>
 
