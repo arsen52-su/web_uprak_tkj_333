@@ -1,168 +1,196 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Rajdhani:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 
 :root {
-  --bg-dark: #070711;
-  --bg-panel: #101024;
-  --text-main: #f8fafc;
-  --text-dim: #cbd5e1;
-  --neon-cyan: #00f3ff;
-  --neon-pink: #ff007f;
-  --neon-green: #39ff14;
-  --neon-purple: #b026ff;
-  --gradasi-cyber: linear-gradient(135deg, #ff007f 0%, #b026ff 50%, #00f3ff 100%);
-  --gradasi-btn: linear-gradient(90deg, #ff007f 0%, #7000ff 100%);
+  --mario-red: #E94343;
+  --mario-red-dark: #B82929;
+  --sky-blue: #69C8F2;
+  --sky-blue-light: #AEE4FF;
+  --warm-yellow: #FFD447;
+  --warm-yellow-dark: #D99B00;
+  --grass-green: #65B957;
+  --grass-green-dark: #438A37;
+  --cream-white: #FFF8E8;
+  --dark-navy: #26334A;
+  --pixel-shadow: 6px 6px 0px #26334A;
+  --pixel-shadow-sm: 4px 4px 0px #26334A;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Rajdhani', sans-serif;
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--bg-dark);
-  /* Latar belakang grid ala game sci-fi dengan cahaya neon ngejreng */
-  background-image: 
-    linear-gradient(rgba(0, 243, 255, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 243, 255, 0.06) 1px, transparent 1px),
-    radial-gradient(circle at 15% 15%, rgba(255, 0, 127, 0.25) 0%, transparent 45%),
-    radial-gradient(circle at 85% 85%, rgba(0, 243, 255, 0.25) 0%, transparent 45%);
-  background-size: 40px 40px, 40px 40px, 100% 100%, 100% 100%;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--sky-blue);
+  /* Pola awan pixel & langit biru cerah khas World 1-1 */
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(255, 255, 255, 0.85) 18px, transparent 19px),
+    radial-gradient(circle at 15% 17%, rgba(255, 255, 255, 0.85) 24px, transparent 25px),
+    radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.85) 18px, transparent 19px),
+    radial-gradient(circle at 82% 26%, rgba(255, 255, 255, 0.8) 20px, transparent 21px),
+    radial-gradient(circle at 86% 25%, rgba(255, 255, 255, 0.8) 26px, transparent 27px),
+    radial-gradient(circle at 90% 26%, rgba(255, 255, 255, 0.8) 20px, transparent 21px),
+    linear-gradient(180deg, #5BBCE8 0%, #8CD8FA 70%, #B8EAFF 100%);
   background-attachment: fixed;
-  color: var(--text-main);
-  line-height: 1.65;
+  color: var(--dark-navy);
+  line-height: 1.7;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
+/* Tipografi Heading Retro Pixel */
 h1, h2, h3, .logo, .badge {
-  font-family: 'Orbitron', sans-serif;
-  letter-spacing: 1px;
+  font-family: 'Press Start 2P', monospace;
+  line-height: 1.45;
 }
 
-@keyframes pulseGlow {
-  0%, 100% { box-shadow: 0 0 15px rgba(0, 243, 255, 0.4), inset 0 0 10px rgba(0, 243, 255, 0.2); }
-  50% { box-shadow: 0 0 28px rgba(255, 0, 127, 0.7), inset 0 0 15px rgba(255, 0, 127, 0.3); }
+@keyframes floatBlock {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-7px); }
 }
 
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(25px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes coinBlink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.75; transform: scale(1.15); }
 }
 
-/* Navbar Ala HUD Game */
+/* =========================================
+   1. NAVBAR (Pixel HUD Interface)
+   ========================================= */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 8%;
-  background: rgba(7, 7, 17, 0.9);
-  backdrop-filter: blur(12px);
+  padding: 16px 7%;
+  background: var(--cream-white);
+  border-bottom: 4px solid var(--dark-navy);
+  box-shadow: 0 5px 0 rgba(38, 51, 74, 0.25);
   position: sticky;
   top: 0;
   z-index: 100;
-  border-bottom: 2px solid var(--neon-cyan);
-  box-shadow: 0 0 25px rgba(0, 243, 255, 0.35);
 }
 
 .logo {
-  font-size: 1.6rem;
-  font-weight: 900;
-  color: #ffffff;
-  text-shadow: 0 0 10px var(--neon-cyan);
+  font-size: 1.15rem;
+  color: var(--mario-red);
+  text-shadow: 2px 2px 0px var(--dark-navy);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo::before {
+  content: "★";
+  color: var(--warm-yellow);
+  text-shadow: 2px 2px 0px var(--dark-navy);
+  animation: coinBlink 1.8s infinite ease-in-out;
 }
 
 .logo span {
-  color: var(--neon-pink);
-  text-shadow: 0 0 12px var(--neon-pink);
+  color: var(--grass-green);
 }
 
 .nav-links {
   list-style: none;
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
 }
 
 .nav-links a {
   text-decoration: none;
-  color: var(--text-dim);
-  font-weight: 700;
-  font-size: 1.05rem;
-  text-transform: uppercase;
-  padding: 8px 16px;
-  border: 1px solid transparent;
-  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
-  transition: all 0.25s ease;
+  color: var(--dark-navy);
+  font-weight: 800;
+  font-size: 0.88rem;
+  padding: 8px 14px;
+  background: #ffffff;
+  border: 3px solid var(--dark-navy);
+  border-radius: 6px;
+  box-shadow: 3px 3px 0px var(--dark-navy);
+  transition: all 0.15s ease;
 }
 
 .nav-links a:hover {
-  color: var(--neon-cyan);
-  background: rgba(0, 243, 255, 0.12);
-  border-color: var(--neon-cyan);
-  text-shadow: 0 0 8px var(--neon-cyan);
+  background: var(--warm-yellow);
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0px var(--dark-navy);
 }
 
 .nav-links a.active {
-  background: var(--gradasi-btn);
+  background: var(--mario-red);
   color: #ffffff;
-  box-shadow: 0 0 18px rgba(255, 0, 127, 0.7);
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0px var(--dark-navy);
 }
 
-/* Hero / Lobby Screen */
+/* =========================================
+   2. HERO SECTION (World 1-1 Lobby)
+   ========================================= */
 .hero {
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 60px 8%;
-  animation: slideUp 0.6s ease-out;
+  padding: 55px 7% 70px 7%;
+  position: relative;
 }
 
 .hero-content {
-  max-width: 860px;
+  max-width: 880px;
+  width: 100%;
 }
 
+/* Question Block Floating Badge */
 .badge {
   display: inline-block;
-  padding: 8px 22px;
-  background: rgba(57, 255, 20, 0.12);
-  color: var(--neon-green);
-  border: 2px solid var(--neon-green);
-  font-size: 0.85rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  margin-bottom: 22px;
-  box-shadow: 0 0 18px rgba(57, 255, 20, 0.4);
-  clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
+  padding: 10px 18px;
+  background: var(--warm-yellow);
+  color: var(--dark-navy);
+  border: 3px solid var(--dark-navy);
+  border-radius: 6px;
+  font-size: 0.72rem;
+  margin-bottom: 24px;
+  box-shadow: var(--pixel-shadow-sm);
+  animation: floatBlock 2.6s ease-in-out infinite;
+}
+
+.badge::before {
+  content: "? ";
+  color: var(--mario-red);
 }
 
 .hero h1 {
-  font-size: 3rem;
-  font-weight: 900;
-  line-height: 1.2;
+  font-size: 1.85rem;
+  color: #ffffff;
+  text-shadow: 
+    4px 4px 0px var(--dark-navy),
+    -2px -2px 0px var(--dark-navy),
+    2px -2px 0px var(--dark-navy),
+    -2px 2px 0px var(--dark-navy);
   margin-bottom: 20px;
-  text-transform: uppercase;
-  background: var(--gradasi-cyber);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 15px rgba(176, 38, 255, 0.5));
 }
 
-.hero p {
-  color: var(--text-dim);
-  margin-bottom: 42px;
-  font-size: 1.2rem;
-  font-weight: 600;
-  max-width: 660px;
-  margin-left: auto;
-  margin-right: auto;
+.hero > .hero-content > p {
+  background: var(--cream-white);
+  border: 3px solid var(--dark-navy);
+  border-radius: 10px;
+  padding: 16px 24px;
+  color: var(--dark-navy);
+  font-size: 1.05rem;
+  font-weight: 700;
+  max-width: 680px;
+  margin: 0 auto 40px auto;
+  box-shadow: var(--pixel-shadow);
 }
 
-/* Kartu Pilih Stage / Level (Bab 1, 2, 3) */
+/* =========================================
+   3. GAME BLOCK CARDS (Menu Pilihan Bab)
+   ========================================= */
 .menu-button-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -171,55 +199,80 @@ h1, h2, h3, .logo, .badge {
 }
 
 .btn-card {
-  background: var(--bg-panel);
-  border: 2px solid rgba(0, 243, 255, 0.3);
-  padding: 28px;
+  background: var(--cream-white);
+  border: 4px solid var(--dark-navy);
+  border-radius: 10px;
+  padding: 26px 22px;
   text-decoration: none;
-  color: inherit;
+  color: var(--dark-navy);
   position: relative;
-  clip-path: polygon(18px 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%, 0 18px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: var(--pixel-shadow);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+  overflow: hidden;
 }
 
-.btn-card:nth-child(1) { border-color: var(--neon-cyan); }
-.btn-card:nth-child(2) { border-color: var(--neon-pink); }
-.btn-card:nth-child(3) { border-color: var(--neon-green); }
+/* Strip warna atas ala Question Block / Pipe / Brick */
+.btn-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 12px;
+  border-bottom: 3px solid var(--dark-navy);
+}
+
+.btn-card:nth-child(1)::before { background: var(--mario-red); }
+.btn-card:nth-child(2)::before { background: var(--warm-yellow); }
+.btn-card:nth-child(3)::before { background: var(--grass-green); }
+
+/* Aksen baut pixel di sudut kartu */
+.btn-card::after {
+  content: "●";
+  position: absolute;
+  bottom: 10px;
+  right: 14px;
+  font-size: 0.7rem;
+  color: var(--warm-yellow-dark);
+}
 
 .btn-card:hover {
-  transform: translateY(-10px) scale(1.03);
-  background: #171736;
+  transform: translateY(-8px);
+  box-shadow: 8px 12px 0px var(--dark-navy);
+  background: #ffffff;
 }
 
-.btn-card:nth-child(1):hover { box-shadow: 0 0 30px rgba(0, 243, 255, 0.6); }
-.btn-card:nth-child(2):hover { box-shadow: 0 0 30px rgba(255, 0, 127, 0.6); }
-.btn-card:nth-child(3):hover { box-shadow: 0 0 30px rgba(57, 255, 20, 0.6); }
-
-.btn-card:nth-child(1) h3 { color: var(--neon-cyan); text-shadow: 0 0 10px rgba(0, 243, 255, 0.6); }
-.btn-card:nth-child(2) h3 { color: var(--neon-pink); text-shadow: 0 0 10px rgba(255, 0, 127, 0.6); }
-.btn-card:nth-child(3) h3 { color: var(--neon-green); text-shadow: 0 0 10px rgba(57, 255, 20, 0.6); }
+.btn-card:active {
+  transform: translate(3px, 3px);
+  box-shadow: 2px 2px 0px var(--dark-navy);
+}
 
 .btn-card h3 {
-  font-size: 1.35rem;
-  font-weight: 800;
-  margin-bottom: 10px;
-  text-transform: uppercase;
+  font-size: 1rem;
+  margin-top: 8px;
+  margin-bottom: 12px;
 }
 
+.btn-card:nth-child(1) h3 { color: var(--mario-red); }
+.btn-card:nth-child(2) h3 { color: var(--warm-yellow-dark); }
+.btn-card:nth-child(3) h3 { color: var(--grass-green-dark); }
+
 .btn-card p {
-  color: var(--text-dim);
-  font-size: 1.05rem;
+  font-size: 0.96rem;
+  font-weight: 600;
+  color: var(--dark-navy);
   margin: 0;
 }
 
-/* Container Halaman Materi */
+/* =========================================
+   4. HALAMAN MATERI (Stage / Level View)
+   ========================================= */
 .container-materi {
-  max-width: 880px;
+  max-width: 860px;
   margin: 0 auto;
-  padding: 50px 8%;
+  padding: 45px 7% 65px 7%;
   flex: 1;
   width: 100%;
-  animation: slideUp 0.5s ease-out;
 }
 
 .breadcrumb {
@@ -228,52 +281,65 @@ h1, h2, h3, .logo, .badge {
 
 .breadcrumb a {
   display: inline-block;
-  padding: 8px 18px;
-  background: var(--bg-panel);
-  color: var(--neon-cyan);
+  padding: 10px 18px;
+  background: var(--cream-white);
+  color: var(--dark-navy);
   text-decoration: none;
-  font-size: 1rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  border: 1px solid var(--neon-cyan);
-  box-shadow: 0 0 12px rgba(0, 243, 255, 0.3);
-  clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
-  transition: all 0.2s;
+  font-weight: 800;
+  font-size: 0.9rem;
+  border: 3px solid var(--dark-navy);
+  border-radius: 8px;
+  box-shadow: var(--pixel-shadow-sm);
+  transition: all 0.15s ease;
 }
 
 .breadcrumb a:hover {
-  background: var(--neon-cyan);
-  color: var(--bg-dark);
+  background: var(--warm-yellow);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px var(--dark-navy);
 }
 
 .container-materi h1 {
-  font-size: 2.3rem;
-  font-weight: 900;
-  margin-bottom: 24px;
-  text-transform: uppercase;
+  font-size: 1.55rem;
   color: #ffffff;
-  text-shadow: 0 0 15px rgba(0, 243, 255, 0.5);
+  text-shadow: 3px 3px 0px var(--dark-navy);
+  margin-bottom: 24px;
 }
 
-/* Kotak Konten Materi Ala Mission Briefing */
+/* Content Box ala Dialog Box Super Mario */
 .content-box {
-  background: rgba(16, 16, 36, 0.92);
-  padding: 36px;
-  border: 2px solid var(--neon-purple);
-  border-left: 8px solid var(--neon-pink);
-  box-shadow: 0 0 30px rgba(176, 38, 255, 0.25);
+  background: var(--cream-white);
+  padding: 34px 30px;
+  border: 4px solid var(--dark-navy);
+  border-radius: 12px;
+  box-shadow: var(--pixel-shadow);
   margin-bottom: 32px;
-  clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+  position: relative;
+}
+
+/* Dekorasi Pipa Hijau kecil di pojok kanan atas box materi */
+.content-box::before {
+  content: "WORLD 1";
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.65rem;
+  background: var(--grass-green);
+  color: #ffffff;
+  padding: 6px 12px;
+  border: 3px solid var(--dark-navy);
+  border-radius: 6px;
+  position: absolute;
+  top: -16px;
+  right: 22px;
+  box-shadow: 3px 3px 0px var(--dark-navy);
 }
 
 .content-box h3 {
-  color: var(--neon-cyan);
-  font-size: 1.3rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  margin-bottom: 12px;
+  font-size: 0.98rem;
+  color: var(--mario-red);
   margin-top: 26px;
-  text-shadow: 0 0 8px rgba(0, 243, 255, 0.4);
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 3px dashed rgba(38, 51, 74, 0.25);
 }
 
 .content-box h3:first-child {
@@ -281,100 +347,111 @@ h1, h2, h3, .logo, .badge {
 }
 
 .content-box p {
-  color: var(--text-dim);
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: var(--dark-navy);
   margin-bottom: 14px;
-  font-size: 1.12rem;
-  font-weight: 500;
 }
 
 .content-box ul {
-  padding-left: 24px;
-  color: var(--text-dim);
+  padding-left: 22px;
+  margin-bottom: 14px;
 }
 
 .content-box li {
   margin-bottom: 10px;
-  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--dark-navy);
 }
 
 .content-box li strong {
-  color: var(--neon-green);
+  color: var(--grass-green-dark);
+  font-weight: 800;
 }
 
 code {
-  background: rgba(255, 0, 127, 0.18);
-  color: var(--neon-pink);
-  padding: 3px 9px;
-  font-family: 'Orbitron', monospace;
-  font-weight: 700;
+  background: var(--warm-yellow);
+  color: var(--dark-navy);
+  padding: 3px 8px;
+  border: 2px solid var(--dark-navy);
+  border-radius: 5px;
+  font-weight: 800;
   font-size: 0.9em;
-  border: 1px solid var(--neon-pink);
 }
 
-/* Tombol Next / Prev Stage */
+/* =========================================
+   5. RETRO GAME BUTTONS
+   ========================================= */
 .btn-primary {
   display: inline-block;
-  padding: 14px 30px;
-  background: var(--gradasi-btn);
+  padding: 14px 24px;
+  background: var(--mario-red);
   color: #ffffff;
-  font-family: 'Orbitron', sans-serif;
-  font-weight: 800;
-  font-size: 0.95rem;
-  text-transform: uppercase;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.78rem;
   text-decoration: none;
-  border: 2px solid var(--neon-pink);
-  cursor: pointer;
+  border: 3px solid var(--dark-navy);
+  border-radius: 8px;
+  box-shadow: var(--pixel-shadow-sm);
+  transition: all 0.15s ease;
   text-align: center;
-  clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
-  box-shadow: 0 0 20px rgba(255, 0, 127, 0.6);
-  transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
-  transform: translateY(-3px) scale(1.04);
-  box-shadow: 0 0 32px rgba(255, 0, 127, 0.9);
+  background: #ff5252;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px var(--dark-navy);
+}
+
+.btn-primary:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px var(--dark-navy);
 }
 
 .btn-secondary {
   display: inline-block;
-  padding: 14px 30px;
-  background: transparent;
-  color: var(--neon-cyan);
-  font-family: 'Orbitron', sans-serif;
-  font-weight: 800;
-  font-size: 0.95rem;
-  text-transform: uppercase;
+  padding: 14px 24px;
+  background: var(--grass-green);
+  color: #ffffff;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.78rem;
   text-decoration: none;
-  border: 2px solid var(--neon-cyan);
+  border: 3px solid var(--dark-navy);
+  border-radius: 8px;
+  box-shadow: var(--pixel-shadow-sm);
+  transition: all 0.15s ease;
   text-align: center;
-  clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
-  box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
-  transition: all 0.3s ease;
 }
 
 .btn-secondary:hover {
-  background: var(--neon-cyan);
-  color: var(--bg-dark);
-  box-shadow: 0 0 25px rgba(0, 243, 255, 0.8);
+  background: #76cc68;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px var(--dark-navy);
 }
 
-/* Player Card (Profil Pembuat & Penutup) */
+/* =========================================
+   6. PLAYER PROFILE CARD (Karakter & Penutup)
+   ========================================= */
 .profile-card-wrapper {
-  background: var(--bg-panel);
-  padding: 45px 35px;
-  border: 2px solid var(--neon-cyan);
-  animation: pulseGlow 4s infinite ease-in-out;
-  text-align: center;
+  background: var(--cream-white);
+  border: 4px solid var(--dark-navy);
+  border-radius: 14px;
+  padding: 40px 30px;
+  box-shadow: var(--pixel-shadow);
   max-width: 680px;
-  margin: 40px auto 10px auto;
-  clip-path: polygon(24px 0, 100% 0, 100% calc(100% - 24px), calc(100% - 24px) 100%, 0 100%, 0 24px);
+  margin: 45px auto 10px auto;
+  position: relative;
 }
 
 .profile-image-container {
-  position: relative;
-  width: 155px;
-  height: 155px;
-  margin: 0 auto 22px auto;
+  width: 145px;
+  height: 145px;
+  margin: 0 auto 20px auto;
+  padding: 6px;
+  background: var(--warm-yellow);
+  border: 4px solid var(--dark-navy);
+  border-radius: 50%;
+  box-shadow: var(--pixel-shadow-sm);
 }
 
 .profile-img {
@@ -382,92 +459,130 @@ code {
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
-  border: 4px solid var(--neon-green);
-  box-shadow: 0 0 25px rgba(57, 255, 20, 0.7);
-  transition: transform 0.3s ease;
+  border: 3px solid var(--dark-navy);
+  transition: transform 0.25s ease;
 }
 
 .profile-img:hover {
-  transform: scale(1.08) rotate(3deg);
+  transform: scale(1.06);
 }
 
 .profile-card-wrapper h2 {
-  font-size: 2rem;
-  font-weight: 900;
-  color: #ffffff;
-  text-transform: uppercase;
-  text-shadow: 0 0 12px var(--neon-cyan);
-  margin-bottom: 8px;
+  font-size: 1.25rem;
+  color: var(--dark-navy);
+  margin-bottom: 10px;
 }
 
 .profile-role {
-  color: var(--neon-green);
-  font-weight: 700;
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  margin-bottom: 24px;
+  color: var(--grass-green-dark);
+  font-weight: 800;
+  font-size: 0.98rem;
+  margin-bottom: 22px;
 }
 
 .quote-box {
-  background: rgba(0, 243, 255, 0.08);
-  border-left: 5px solid var(--neon-cyan);
-  padding: 18px 22px;
+  background: #ffffff;
+  border: 3px solid var(--dark-navy);
+  border-left: 8px solid var(--sky-blue);
+  border-radius: 8px;
+  padding: 18px 20px;
   text-align: left;
-  margin-bottom: 26px;
+  margin-bottom: 24px;
+  box-shadow: 3px 3px 0px rgba(38, 51, 74, 0.2);
 }
 
 .quote-box p {
-  color: var(--text-main);
   font-style: italic;
-  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--dark-navy);
   margin: 0;
 }
 
 .thank-you-banner {
-  background: linear-gradient(135deg, rgba(255, 0, 127, 0.2), rgba(176, 38, 255, 0.25));
-  border: 2px dashed var(--neon-pink);
-  padding: 22px;
-  margin-top: 22px;
-  box-shadow: 0 0 20px rgba(255, 0, 127, 0.3);
+  background: var(--warm-yellow);
+  border: 3px solid var(--dark-navy);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: var(--pixel-shadow-sm);
 }
 
 .thank-you-banner h3 {
-  color: var(--neon-pink);
-  font-size: 1.6rem;
-  font-weight: 900;
-  text-shadow: 0 0 12px var(--neon-pink);
-  margin-bottom: 6px;
+  font-size: 1.05rem;
+  color: var(--mario-red);
+  text-shadow: 1px 1px 0px var(--dark-navy);
+  margin-bottom: 8px;
 }
 
 .thank-you-banner p {
-  color: #ffffff;
-  font-size: 1.1rem;
-  font-weight: 700;
+  font-weight: 800;
+  color: var(--dark-navy);
+  font-size: 0.96rem;
   margin: 0;
 }
 
-/* Navigasi Bawah & Footer */
+/* =========================================
+   7. PAGINATION & PIXEL GRASS FOOTER
+   ========================================= */
 .pagination {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 38px;
+  gap: 14px;
+  margin-top: 32px;
 }
 
 footer {
   text-align: center;
-  padding: 24px;
-  border-top: 2px solid var(--neon-purple);
-  color: var(--text-dim);
-  font-size: 1rem;
-  font-weight: 700;
-  background: rgba(7, 7, 17, 0.95);
-  box-shadow: 0 -5px 25px rgba(176, 38, 255, 0.25);
+  padding: 26px 16px;
+  background: var(--grass-green);
+  border-top: 6px solid var(--dark-navy);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.92rem;
+  text-shadow: 2px 2px 0px var(--dark-navy);
+  position: relative;
 }
 
-@media (max-width: 650px) {
-  .hero h1 { font-size: 2rem; }
-  .nav-links { display: none; }
-  .pagination { flex-direction: column; gap: 14px; }
-  .pagination a { width: 100%; }
+/* Pola rumput pixel di bagian atas footer */
+footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: repeating-linear-gradient(
+    90deg,
+    #88E079 0px,
+    #88E079 20px,
+    var(--grass-green) 20px,
+    var(--grass-green) 40px
+  );
+  border-bottom: 3px solid var(--dark-navy);
+}
+
+/* =========================================
+   8. RESPONSIVE MOBILE ADJUSTMENTS
+   ========================================= */
+@media (max-width: 720px) {
+  .navbar {
+    flex-direction: column;
+    gap: 12px;
+    padding: 14px 5%;
+  }
+  .nav-links {
+    justify-content: center;
+  }
+  .hero h1 {
+    font-size: 1.25rem;
+  }
+  .container-materi h1 {
+    font-size: 1.15rem;
+  }
+  .pagination {
+    flex-direction: column;
+  }
+  .pagination a {
+    width: 100%;
+  }
 }
